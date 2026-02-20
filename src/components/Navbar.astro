@@ -1,9 +1,16 @@
 ---
 // src/components/Navbar.astro
-const pathname = new URL(Astro.request.url).pathname;
+// Limpiamos la ruta actual quitando la barra final si existe para comparar mejor
+const pathname = new URL(Astro.request.url).pathname.replace(/\/$/, "") || "/";
+
+// Función auxiliar para verificar si el link está activo
+const isActive = (path: string) => {
+    if (path === "/") return pathname === "/";
+    return pathname.startsWith(path);
+};
 ---
 <header 
-  class="sticky top-0 z-50 bg-white backdrop-blur-md px-6 py-2 transition-all duration-500 border-b border-transparent" 
+  class="sticky top-0 z-50 bg-white/90 backdrop-blur-md px-6 py-2 transition-all duration-500 border-b border-transparent" 
   id="main-header"
 >
     <div class="max-w-7xl mx-auto flex items-center justify-between">
@@ -15,10 +22,10 @@ const pathname = new URL(Astro.request.url).pathname;
         </div>
 
         <nav class="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
-            <a class={`nav-link relative py-2 font-semibold text-gray-600 ${pathname === "/" ? "link-active" : ""}`} href="/">Inicio</a>
-            <a class={`nav-link relative py-2 font-semibold text-gray-600 ${pathname === "/habitaciones" ? "link-active" : ""}`} href="/habitaciones">Habitaciones</a>
-            <a class={`nav-link relative py-2 font-semibold text-gray-600 ${pathname === "/servicios" ? "link-active" : ""}`} href="/servicios">Servicios</a>
-            <a class={`nav-link relative py-2 font-semibold text-gray-600 ${pathname === "/contacto" ? "link-active" : ""}`} href="/contacto">Contacto</a>
+            <a class={`nav-link relative py-2 font-semibold text-gray-600 ${isActive("/") ? "link-active" : ""}`} href="/">Inicio</a>
+            <a class={`nav-link relative py-2 font-semibold text-gray-600 ${isActive("/habitaciones") ? "link-active" : ""}`} href="/habitaciones">Habitaciones</a>
+            <a class={`nav-link relative py-2 font-semibold text-gray-600 ${isActive("/servicios") ? "link-active" : ""}`} href="/servicios">Servicios</a>
+            <a class={`nav-link relative py-2 font-semibold text-gray-600 ${isActive("/contacto") ? "link-active" : ""}`} href="/contacto">Contacto</a>
         </nav>
 
         <div class="flex items-center gap-4 flex-shrink-0">
@@ -42,10 +49,10 @@ const pathname = new URL(Astro.request.url).pathname;
     </div>
     
     <nav class="flex flex-col gap-4 mt-8">
-        <a class={`text-lg font-bold p-3 rounded-lg ${pathname === "/" ? "text-blue-ocean bg-blue-ocean/10" : "text-gray-600"}`} href="/">Inicio</a>
-        <a class={`text-lg font-bold p-3 rounded-lg ${pathname === "/habitaciones" ? "text-blue-ocean bg-blue-ocean/10" : "text-gray-600"}`} href="/habitaciones">Habitaciones</a>
-        <a class={`text-lg font-bold p-3 rounded-lg ${pathname === "/servicios" ? "text-blue-ocean bg-blue-ocean/10" : "text-gray-600"}`} href="/servicios">Servicios</a>
-        <a class={`text-lg font-bold p-3 rounded-lg ${pathname === "/contacto" ? "text-blue-ocean bg-blue-ocean/10" : "text-gray-600"}`} href="/contacto">Contacto</a>
+        <a class={`text-lg font-bold p-3 rounded-lg ${isActive("/") ? "text-blue-ocean bg-blue-ocean/10" : "text-gray-600"}`} href="/">Inicio</a>
+        <a class={`text-lg font-bold p-3 rounded-lg ${isActive("/habitaciones") ? "text-blue-ocean bg-blue-ocean/10" : "text-gray-600"}`} href="/habitaciones">Habitaciones</a>
+        <a class={`text-lg font-bold p-3 rounded-lg ${isActive("/servicios") ? "text-blue-ocean bg-blue-ocean/10" : "text-gray-600"}`} href="/servicios">Servicios</a>
+        <a class={`text-lg font-bold p-3 rounded-lg ${isActive("/contacto") ? "text-blue-ocean bg-blue-ocean/10" : "text-gray-600"}`} href="/contacto">Contacto</a>
         
         <div class="mt-4 pt-4 border-t border-gray-100">
             <button class="w-full bg-blue-ocean text-white py-4 rounded-xl font-bold text-lg">
@@ -56,53 +63,57 @@ const pathname = new URL(Astro.request.url).pathname;
 </div>
 
 <style>
-    /* Estilos del Link Activo con tus variables */
+    /* Estilos del Link Activo */
     .nav-link { display: inline-block; transition: all 0.3s ease; }
-    .nav-link:hover { color: var(--color-blue-ocean); }
     
-    .link-active { color: var(--color-blue-ocean) !important; }
+    /* Nota: Usamos HEX directo o clases de Tailwind si las variables de CSS fallan */
+    .nav-link:hover { color: #0077b6; }
+    
+    .link-active { color: #0077b6 !important; }
     .link-active::after {
         content: ''; 
         position: absolute; 
-        bottom: 0; 
+        bottom: -2px; 
         left: 50%; 
         transform: translateX(-50%);
-        width: 80%; 
+        width: 100%; 
         height: 2px;
-        background: linear-gradient(to right, transparent, var(--color-blue-ocean), transparent);
+        background: #0077b6;
         border-radius: 2px;
     }
 
-    /* Ocultar hamburguesa en escritorio */
     @media (min-width: 768px) {
         .menu-hamburguesa { display: none !important; }
     }
 </style>
 
 <script>
-    document.addEventListener('astro:page-load', () => {
+    function setupMenu() {
         const header = document.getElementById('main-header');
         const mobileMenu = document.getElementById('mobile-menu');
         const openBtn = document.getElementById('mobile-menu-open');
         const closeBtn = document.getElementById('mobile-menu-close');
 
-        // Lógica de Scroll para Sombra y Borde
+        // Scroll Logic
         window.addEventListener('scroll', () => {
             if (window.scrollY > 10) {
-                header?.classList.add('shadow-xl', 'shadow-blue-ocean/5', 'border-blue-ocean/10');
+                header?.classList.add('shadow-xl', 'shadow-blue-900/5', 'border-blue-200/20');
                 header?.classList.replace('py-2', 'py-1');
             } else {
-                header?.classList.remove('shadow-xl', 'shadow-blue-ocean/5', 'border-blue-ocean/10');
+                header?.classList.remove('shadow-xl', 'shadow-blue-900/5', 'border-blue-200/20');
                 header?.classList.replace('py-1', 'py-2');
             }
         });
 
-        // Lógica Menú Mobile
+        // Mobile Menu Logic
         openBtn?.addEventListener('click', () => mobileMenu?.classList.remove('translate-x-full'));
         closeBtn?.addEventListener('click', () => mobileMenu?.classList.add('translate-x-full'));
         
         mobileMenu?.querySelectorAll('a, button').forEach(el => {
             el.addEventListener('click', () => mobileMenu?.classList.add('translate-x-full'));
         });
-    });
+    }
+
+    // Se ejecuta al cargar y al navegar (para Astro View Transitions)
+    document.addEventListener('astro:page-load', setupMenu);
 </script>
