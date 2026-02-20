@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@theme {
+  /* Azules del texto y olas */
+  --color-blue-ocean: #2B7DA3;
+  --color-sky-ocean: #5ab2d5;
+
+  /* Colores del Sol y acentos */
+  --color-golden-sun: #f1a63a;
+  --color-orange-sun: #fde06d;
+
+  /* Escala de grises para textos de lectura */
+  --color-gray-dark: #555555;
+  --color-gray-light: #eaeaea;
+  --color-sand-orange: #f7d9b6;
+    --color-sand-dark:#d7b68b;
+    --color-sand-mdark:#8d754e
+}
+
+/* --- EFECTO DE BOTÓN PERSONALIZADO --- */
+
+ .btn-ocean {
+  position: relative;
+  overflow: hidden;
+  font-size: 14px;
+  padding: 12px 20px;
+  /* ASEGÚRATE de que este color sea el que quieres ver de fondo */
+  background-color:#2D8BB9 !important; 
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 1; /* El botón y su texto están en el nivel 1 */
+}
+
+.onda {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  /* BAJA LA OPACIDAD: usa 0.1 o 0.2 para que sea casi transparente */
+  background-color: rgba(255, 255, 255, 0.15); 
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  /* EL Z-INDEX DEBE SER NEGATIVO para ir por detrás del texto */
+  z-index: 0; 
+  opacity: 0;
+}
+
+/* Animaciones individuales como pediste */
+.btn-ocean:hover .onda:nth-child(1) { 
+  animation: ripple-slow 3s cubic-bezier(0.4, 0, 0.2, 1) forwards 1;
+}
+
+.btn-ocean:hover .onda:nth-child(2) { 
+  animation: ripple-slow 1.8s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards 1;
+}
+
+@keyframes ripple-slow {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.5; /* Empieza sutil */
+  }
+  100% {
+    width: 500px;
+    height: 500px;
+    opacity: 0; /* Termina invisible para que se vuelva a ver el fondo puro */
+  }
+}

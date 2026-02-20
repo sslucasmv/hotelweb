@@ -1,0 +1,52 @@
+---
+// 1. Importamos el Navbar, estilos y el Router de Astro
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { ClientRouter } from 'astro:transitions'; // <--- Nueva importación
+import '../styles/global.css';
+
+const { title = "Hotel Soleares" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} - Hotel Soleares</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <ClientRouter /> 
+</head>
+
+<body class="bg-[#f4f4f4] font-display text-[#0e181a]">
+    
+    <Navbar transition:persist />
+
+    <main>
+        <slot />
+    </main>
+
+   <Footer />
+
+ 
+
+</body>
+</html>
+<style>
+    .link-active {
+        display: inline-block; /* Esto asegura que el fondo tenga una base sólida de cálculo */
+        color: #c29d59 !important;
+        font-weight: 800 !important;
+        background-image: linear-gradient(to right, transparent, #c29d59, transparent);
+        background-position: bottom center;
+        background-size: 70% 2px;
+        background-repeat: no-repeat;
+        /* Forzamos a que la transición sea solo de opacidad para evitar el movimiento */
+        view-transition-name: active-link; 
+    }
+</style>
