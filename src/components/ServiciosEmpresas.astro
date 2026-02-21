@@ -1,93 +1,89 @@
 ---
 import { Image } from 'astro:assets';
-
 import puertoMardelplata from '../assets/images/puertomardelplata.jpg';
 import parqueIndustrial from '../assets/images/parqueindustrial.jpg'; 
 import centralElectrica from '../assets/images/centraleletrica.jpeg';
-
 ---
+<section class="px-6 py-16 pb-20 border-t border-gray-light bg-gray-light/50">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+      
+      <div class="flex flex-col">
+        <div class="mb-8">
+          <h2 class="text-3xl font-bold mb-5 text-blue-ocean">Servicios para Empresas</h2>
+          <div class="space-y-4 text-gray-700 text-base leading-relaxed">
+            <p>
+              Brindamos soluciones logísticas para delegaciones industriales y viajeros de negocios en la zona sur de Mar del Plata.
+            </p>
+            <p class="border-l-4 border-blue-ocean pl-4 py-1 italic text-sm">
+              <strong>Ubicación Estratégica:</strong> 6 min. del Puerto y 10 min. del Parque Industrial y Central 9 de Julio.
+            </p>
+          </div>
+        </div>
 
+        <div class="mt-auto grid grid-cols-3 gap-4">
+          <div class="group">
+            <div class="aspect-square w-full rounded-xl overflow-hidden shadow-sm border border-gray-100">
+              <Image src={puertoMardelplata} alt="Puerto Comercial" class="w-full h-full object-cover transition-transform group-hover:scale-110" />
+            </div>
+            <p class="text-[11px] font-bold text-gray-400 mt-2 text-center uppercase tracking-widest">Puerto</p>
+          </div>
+          <div class="group">
+            <div class="aspect-square w-full rounded-xl overflow-hidden shadow-sm border border-gray-100">
+              <Image src={parqueIndustrial} alt="Parque Industrial" class="w-full h-full object-cover transition-transform group-hover:scale-110" />
+            </div>
+            <p class="text-[11px] font-bold text-gray-400 mt-2 text-center uppercase tracking-widest">Industrial</p>
+          </div>
+          <div class="group">
+            <div class="aspect-square w-full rounded-xl overflow-hidden shadow-sm border border-gray-100">
+              <Image src={centralElectrica} alt="Central Eléctrica" class="w-full h-full object-cover transition-transform group-hover:scale-110" />
+            </div>
+            <p class="text-[11px] font-bold text-gray-400 mt-2 text-center uppercase tracking-widest">Energía</p>
+          </div>
+        </div>
+      </div>
 
+      <div class="flex flex-col">
+        <div class="bg-white p-8 rounded-2xl border border-blue-100 shadow-sm flex flex-col h-full">
+          <div class="mb-6">
+            <h3 class="text-blue-ocean font-bold text-xs uppercase tracking-widest mb-2">Alojamiento para empresas</h3>
+            <p class="text-gray-700 text-sm leading-relaxed">
+              ¿Necesita alojamiento para sus empleados? Póngase en contacto con nosotros para brindarle asesoramiento personalizado en cuanto a la disposición de habitaciones y precios personalizados para empresas.
+            </p>
+          </div>
+          
+          <div class="space-y-5 mb-6 mt-8">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-blue-ocean text-xl">mail</span>
+              </div>
+              <div class="overflow-hidden">
+                <p class="text-[10px] text-gray-400 uppercase tracking-wider font-bold">Email corporativo</p>
+                <p class="text-sm font-semibold truncate">empresas@hotelsoleares.com.ar</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-blue-ocean text-xl">phone_in_talk</span>
+              </div>
+              <div>
+                <p class="text-[10px] text-gray-400 uppercase tracking-wider font-bold">Atención Comercial</p>
+                <p class="text-sm font-semibold">+54 223 484-1431</p>
+              </div>
+            </div>
+          </div>
 
+          <div class="mt-auto pt-6 border-t border-blue-50">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <p class="text-gray-800 font-bold text-xs uppercase">Haga click para pedir asesoramiento personalizado</p>
+              <button class="bg-blue-ocean cursor-pointer  hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-md text-xs whitespace-nowrap">
+                Pedir presupuesto
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
-
-<section class="px-6 py-10 pb-20 border-t border-gray-light">
-<div class="max-w-7xl mx-auto"><!-- Section Header (Full Width) -->
-<div class="mb-12 text-center lg:text-left">
-<h2 class="text-3xl font-bold mb-4 text-blue-ocean">Servicios para Empresas</h2>
-<p class="text-gray-600 leading-relaxed max-w-4xl">
-        Ofrecemos soluciones integrales diseñadas específicamente para el viajero de negocios moderno y delegaciones industriales. Nuestras instalaciones cuentan con espacios de trabajo tranquilos y servicios logísticos personalizados para garantizar que su estancia sea tan productiva como placentera.
-    </p>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-<!-- Left Column: Image Grid -->
-<div class="grid gap-4 grid-cols-3">
-<!-- Image 1 -->
-<div class="flex flex-col items-center">
-<div class="aspect-square w-full rounded-xl overflow-hidden shadow-sm">
-    <Image
-    src={ puertoMardelplata } 
-    alt="Puerto Comercial" class="w-full h-full object-cover"
-    />
-</div>
-<p class="text-[14px] font-bold text-gray-800 mt-2 text-center">Puerto Comercial</p>
-</div>
-<!-- Image 2 -->
-<div class="flex flex-col items-center">
-<div class="aspect-square w-full rounded-xl overflow-hidden shadow-sm">
-    <Image
-    src={ parqueIndustrial }
-    alt="parque industrial mar del plata" class="w-full h-full object-cover"
-    />
-</div>
-<p class="text-[14px] font-bold text-gray-800 mt-2 text-center">Parque Industrial</p>
-</div>
-<!-- Image 3 -->
-<div class="flex flex-col items-center">
-<div class="aspect-square w-full rounded-xl overflow-hidden shadow-sm">
-  <Image src={ centralElectrica } 
-    alt="central electrica 9 de julio mar del plata" class="w-full h-full object-cover"
-    />
-</div>
-<p class="text-[14px] font-bold text-gray-800 mt-2 text-center">Sector Energético</p>
-</div>
-</div>
-<!-- Right Column: Info & CTA -->
-<div class="flex flex-col gap-6"><div class="bg-white p-8 rounded-2xl border border-blue-100 shadow-sm flex flex-col gap-6">
-<div>
-<p class="text-gray-700 text-m leading-relaxed mb-4">
-            ¿Está planeando un evento corporativo o un viaje para su equipo? Solicite un presupuesto personalizado y descubra nuestras tarifas exclusivas para empresas.
-        </p>
-</div>
-<div class="space-y-4">
-<div class="flex items-center gap-4 text-gray-700">
-<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-<span class="material-symbols-outlined text-primary">mail</span>
-</div>
-<div>
-<p class="text-xs text-gray-500 uppercase tracking-wider font-bold">Email</p>
-<p class="text-sm font-semibold">empresas@hotelcoastal.com</p>
-</div>
-</div>
-<div class="flex items-center gap-4 text-gray-700">
-<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-<span class="material-symbols-outlined text-primary">phone_in_talk</span>
-</div>
-<div>
-<p class="text-xs text-gray-500 uppercase tracking-wider font-bold">Teléfono</p>
-<p class="text-sm font-semibold">+34 900 123 456</p>
-</div>
-</div>
-</div>
-<!-- Horizontal line -->
-<div class="border-t border-blue-50 my-2 mx-2"></div>
-<!-- New Bottom Section -->
-<div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-<p class="text-gray-800 font-semibold text-sm">Pide asesoramiento personalizado</p>
-<button class="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-xl transition-all shadow-lg shadow-primary/20 whitespace-nowrap text-sm">
-            Pedir presupuesto
-        </button>
-</div>
-</div></div>
-</div></div>
+    </div>
+  </div>
 </section>
