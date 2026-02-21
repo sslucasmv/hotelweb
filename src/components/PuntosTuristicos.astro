@@ -1,39 +1,62 @@
+---
+import { Image } from 'astro:assets';
+// Asegúrate de importar tus imágenes aquí (esto es un ejemplo)
+import balnearios from '../assets/images/puntamogotes.jpg';
+import bosque from '../assets/images/bosquepr.png';
+import puerto from '../assets/images/puertocomercial.webp';
+import bendu from '../assets/images/benduarena.jpg';
+---
 
-<section class="py-10 px-6 bg-white">
-<div class="max-w-7xl mx-auto">
-<div class="text-center mb-12">
-<h2 class="text-3xl font-bold mb-4 text-blue-ocean">Puntos turísticos</h2>
-<p class="text-gray-600">Explora los rincones más emblemáticos cerca de nuestro hotel.</p>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-<!-- Attraction 1 -->
-<div class="group">
-<div class="aspect-[4/3] rounded-xl overflow-hidden mb-4 shadow-sm">
-<img alt="Catedral Histórica" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="/images/sierralaguna.jpg"/>
-</div>
-<p class="text-sm font-medium text-gray-800 text-center">Sierra y Laguna de los Padres, un lugar excelente en cercanias a la ciudad.</p>
-</div>
-<!-- Attraction 2 -->
-<div class="group">
-<div class="aspect-[4/3] rounded-xl overflow-hidden mb-4 shadow-sm">
-<img alt="Museo de Arte" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="/images/torreagua.jpg"/>
-</div>
-<p class="text-sm font-medium text-gray-800 text-center">Visite edificios historicos y emblematicos de nuestra ciudad.</p>
-</div>
-<!-- Attraction 3 -->
-<div class="group">
-<div class="aspect-[4/3] rounded-xl overflow-hidden mb-4 shadow-sm">
-<img alt="Parque Central" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="/images/puertocomercial.webp"/>
-</div>
-<p class="text-sm font-medium text-gray-800 text-center">Puerto comercial del puerto, ideal para probar productos de nuestro mar.</p>
-</div>
-<!-- Attraction 4 -->
-<div class="group">
-<div class="aspect-[4/3] rounded-xl overflow-hidden mb-4 shadow-sm">
-<img alt="Mercado Tradicional" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="/images/benduarena.jpg"/>
-</div>
-<p class="text-sm font-medium text-gray-800 text-center">Bendu Arena, Abbey Road, Brew House entre otros, ofrecen recitales durante todo el año.</p>
-</div>
-</div>
-</div>
+<section class="py-16 px-6 bg-white">
+  <div class="max-w-7xl mx-auto">
+    
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold mb-4 text-blue-900">Dónde estamos</h2>
+      <p class="text-gray-600">Gral. Pacheco 2168, Punta Mogotes. El equilibrio perfecto entre ciudad y naturaleza.</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 h-full">
+        <div class="group relative overflow-hidden rounded-2xl shadow-md">
+          <Image src={balnearios} alt="Sierra y Laguna de los Padres" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+          <div class="absolute bottom-0 left-0 right-0 bg-black/50 p-3">
+            <p class="text-sm text-white text-center">Playa punta mogotes - a 200 metros</p>
+          </div>
+        </div>
+
+        <div class="group relative overflow-hidden rounded-2xl shadow-md">
+          <Image src={bosque} alt="Edificios Históricos" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+          <div class="absolute bottom-0 left-0 right-0 bg-black/50 p-3">
+            <p class="text-sm text-white text-center">Bosque Peralta Ramos - a 1 km</p>
+          </div>
+        </div>
+
+        <div class="group relative overflow-hidden rounded-2xl shadow-md">
+          <Image src={puerto} alt="Puerto Comercial" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+          <div class="absolute bottom-0 left-0 right-0 bg-black/50 p-3">
+            <p class="text-sm text-white text-center">Puerto Comercial - a 2,9 km</p>
+          </div>
+        </div>
+
+        <div class="group relative overflow-hidden rounded-2xl shadow-md">
+          <Image src={bendu} alt="Recitales y Eventos" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+          <div class="absolute bottom-0 left-0 right-0 bg-black/50 p-3">
+            <p class="text-sm text-white text-center">Bendu Arena - a 3,3 km</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden shadow-2xl border-4 border-gray-50 h-full min-h-[400px]">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3141.5!2d-57.55!3d-38.07!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzhCsDA0JzE0LjAiUyA1N8KwMzMnMDYuMCJX!5e0!3m2!1ses!2sar!4v1700000000000" 
+          class="w-full h-full" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy">
+        </iframe>
+      </div>
+
+    </div>
+  </div>
 </section>

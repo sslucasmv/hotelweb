@@ -1,3 +1,16 @@
+---
+import { Image } from 'astro:assets';
+
+import puertoMardelplata from '../assets/images/puertomardelplata.jpg';
+import parqueIndustrial from '../assets/images/parqueindustrial.jpg'; 
+import centralElectrica from '../assets/images/centraleletrica.jpeg';
+
+---
+
+
+
+
+
 <section class="px-6 py-10 pb-20 border-t border-gray-light">
 <div class="max-w-7xl mx-auto"><!-- Section Header (Full Width) -->
 <div class="mb-12 text-center lg:text-left">
@@ -12,21 +25,29 @@
 <!-- Image 1 -->
 <div class="flex flex-col items-center">
 <div class="aspect-square w-full rounded-xl overflow-hidden shadow-sm">
-<img alt="Puerto Comercial" class="w-full h-full object-cover" src="https://revistapuerto.com.ar/wp-content/uploads/2021/10/Revista-Puerto-Mar-del-Plata-Industria-Naval-02.jpg"/>
+    <Image
+    src={ puertoMardelplata } 
+    alt="Puerto Comercial" class="w-full h-full object-cover"
+    />
 </div>
 <p class="text-[14px] font-bold text-gray-800 mt-2 text-center">Puerto Comercial</p>
 </div>
 <!-- Image 2 -->
 <div class="flex flex-col items-center">
 <div class="aspect-square w-full rounded-xl overflow-hidden shadow-sm">
-<img alt="Parque Industrial" class="w-full h-full object-cover" src="https://lateclamdq-repos-dw6.aplinews.com/archivos/noticias/fotografias/54468_3.jpg"/>
+    <Image
+    src={ parqueIndustrial }
+    alt="parque industrial mar del plata" class="w-full h-full object-cover"
+    />
 </div>
 <p class="text-[14px] font-bold text-gray-800 mt-2 text-center">Parque Industrial</p>
 </div>
 <!-- Image 3 -->
 <div class="flex flex-col items-center">
 <div class="aspect-square w-full rounded-xl overflow-hidden shadow-sm">
-<img alt="Sector Energético" class="w-full h-full object-cover" src="https://necochea.gov.ar/wp-content/uploads/2022/09/ILUSTRATIVA-Estacion-Transformadora-01.jpeg"/>
+  <Image src={ centralElectrica } 
+    alt="central electrica 9 de julio mar del plata" class="w-full h-full object-cover"
+    />
 </div>
 <p class="text-[14px] font-bold text-gray-800 mt-2 text-center">Sector Energético</p>
 </div>
