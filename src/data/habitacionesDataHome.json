@@ -1,0 +1,17 @@
+[
+  {
+    "titulo": "Habitación Doble",
+    "descripcion": "Perfecta para parejas. Espaciosa, iluminada y equipada con todas las comodidades.",
+    "imagen": "doble"
+  },
+  {
+    "titulo": "Habitación Triple",
+    "descripcion": "Ideal para familias pequeñas. Confort y amplitud asegurados.",
+    "imagen": "triple"
+  },
+  {
+    "titulo": "Habitación Cuádruple",
+    "descripcion": "Nuestra opción más amplia para grupos o familias numerosas.",
+    "imagen": "cuadruple"
+  }
+]

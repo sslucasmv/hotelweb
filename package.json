@@ -9,8 +9,11 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@fontsource/manrope": "^5.2.8",
+    "@iconify-json/material-symbols": "^1.2.58",
     "@tailwindcss/vite": "^4.2.0",
     "astro": "^5.17.1",
+    "astro-icon": "^1.1.5",
     "tailwindcss": "^4.2.0"
   }
 }

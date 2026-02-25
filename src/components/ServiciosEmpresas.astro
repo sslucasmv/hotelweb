@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import puertoMardelplata from '../assets/images/puertomardelplata.jpg';
 import parqueIndustrial from '../assets/images/parqueindustrial.jpg'; 
 import centralElectrica from '../assets/images/centraleletrica.jpeg';
+import { Icon } from 'astro-icon/components';
 ---
 <section class="px-6 py-16 pb-20 border-t border-gray-light bg-gray-light/50">
   <div class="max-w-7xl mx-auto">
@@ -46,8 +47,8 @@ import centralElectrica from '../assets/images/centraleletrica.jpeg';
       <div class="flex flex-col">
         <div class="bg-white p-8 rounded-2xl border border-blue-100 shadow-sm flex flex-col h-full">
           <div class="mb-6">
-            <h3 class="text-blue-ocean font-bold text-xs uppercase tracking-widest mb-2">Alojamiento para empresas</h3>
-            <p class="text-gray-700 text-sm leading-relaxed">
+            <h3 class="text-blue-ocean font-bold text-lg uppercase tracking-widest mb-2">Alojamiento para empresas</h3>
+            <p class="text-gray-700 text-ms leading-relaxed">
               ¿Necesita alojamiento para sus empleados? Póngase en contacto con nosotros para brindarle asesoramiento personalizado en cuanto a la disposición de habitaciones y precios personalizados para empresas.
             </p>
           </div>
@@ -55,7 +56,7 @@ import centralElectrica from '../assets/images/centraleletrica.jpeg';
           <div class="space-y-5 mb-6 mt-8">
             <div class="flex items-center gap-4">
               <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
-                <span class="material-symbols-outlined text-blue-ocean text-xl">mail</span>
+                <Icon name="material-symbols:mail-outline" class="text-blue-ocean text-xl w-6 h-6" />
               </div>
               <div class="overflow-hidden">
                 <p class="text-[10px] text-gray-400 uppercase tracking-wider font-bold">Email corporativo</p>
@@ -64,7 +65,7 @@ import centralElectrica from '../assets/images/centraleletrica.jpeg';
             </div>
             <div class="flex items-center gap-4">
               <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
-                <span class="material-symbols-outlined text-blue-ocean text-xl">phone_in_talk</span>
+                <Icon name="material-symbols:phone-in-talk-outline" class="text-blue-ocean text-xl w-6 h-6" />
               </div>
               <div>
                 <p class="text-[10px] text-gray-400 uppercase tracking-wider font-bold">Atención Comercial</p>
@@ -73,14 +74,32 @@ import centralElectrica from '../assets/images/centraleletrica.jpeg';
             </div>
           </div>
 
-          <div class="mt-auto pt-6 border-t border-blue-50">
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-              <p class="text-gray-800 font-bold text-xs uppercase">Haga click para pedir asesoramiento personalizado</p>
-              <button class="bg-blue-ocean cursor-pointer  hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-md text-xs whitespace-nowrap">
-                Pedir presupuesto
-              </button>
-            </div>
-          </div>
+        <div class="mt-auto pt-6 border-t border-blue-100">
+  <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="text-gray-600 font-bold text-[10px] md:text-xs uppercase tracking-wider">
+      Haga click para pedir asesoramiento
+    </p>
+    
+    <a 
+      href="https://wa.me/549223XXXXXXX?text=Hola!%20Me%20gustaría%20pedir%20presupuesto%20por%20una%20estancia%20en%20el%20Hotel." 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="group bg-blue-600 text-white font-bold py-2.5 px-6 rounded-full 
+             text-sm transition-all duration-300 ease-in-out
+             md:hover:bg-blue-700 md:hover:-translate-y-0.5 
+             active:scale-95 flex items-center gap-2 shadow-md"
+    >
+      Pedir presupuesto
+      <Icon 
+        name="material-symbols:arrow-forward-rounded" 
+        class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" 
+      />
+    </a>
+  </div>
+</div>
+
+
+          
         </div>
       </div>
 

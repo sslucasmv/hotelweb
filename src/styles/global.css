@@ -1,6 +1,19 @@
 @import "tailwindcss";
 
+/* 1. Importamos las fuentes que instalaste con npm */
+@import "@fontsource/manrope/300.css";
+@import "@fontsource/manrope/400.css";
+@import "@fontsource/manrope/600.css";
+@import "@fontsource/manrope/700.css";
+@import "@fontsource/manrope/800.css";
+
+
 @theme {
+
+  /* 2. Definimos que la fuente 'sans' (la que viene por defecto) sea Manrope */
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+
   /* Azules del texto y olas */
   --color-blue-ocean: #2B7DA3;
   --color-sky-ocean: #5ab2d5;
