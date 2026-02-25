@@ -19,28 +19,64 @@ import bendu from '../assets/images/benduarena.jpg';
       
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 h-full">
         <div class="group relative overflow-hidden rounded-2xl shadow-md">
-          <Image src={balnearios} alt="Sierra y Laguna de los Padres" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+         <Image 
+  src={balnearios} 
+  alt="Sierra y Laguna de los Padres" 
+  width={800}    /* Ajuste para escritorio */
+  height={600}   /* Mantiene proporción 4:3 o 3:2 según tu diseño */
+  widths={[400, 800]} 
+  sizes="(max-width: 600px) 400px, 800px" 
+  format="webp"
+  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+/>
           <div class="absolute bottom-0 left-0 right-0 bg-black/50 p-3">
             <p class="text-sm text-white text-center">Playa punta mogotes - a 200 metros</p>
           </div>
         </div>
 
         <div class="group relative overflow-hidden rounded-2xl shadow-md">
-          <Image src={bosque} alt="Edificios Históricos" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+          <Image 
+  src={bosque} 
+  alt="Edificios Históricos y Bosque" 
+  width={800} 
+  height={600} 
+  widths={[400, 800]} 
+  sizes="(max-width: 600px) 400px, 800px" 
+  format="webp"
+  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+/>
           <div class="absolute bottom-0 left-0 right-0 bg-black/50 p-3">
             <p class="text-sm text-white text-center">Bosque Peralta Ramos - a 1 km</p>
           </div>
         </div>
 
         <div class="group relative overflow-hidden rounded-2xl shadow-md">
-          <Image src={puerto} alt="Puerto Comercial" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+          <Image 
+  src={puerto} 
+  alt="Puerto Comercial de Mar del Plata" 
+  width={800} 
+  height={600} 
+  widths={[400, 800]} 
+  sizes="(max-width: 600px) 400px, 800px" 
+  format="webp"
+  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+/>
           <div class="absolute bottom-0 left-0 right-0 bg-black/50 p-3">
             <p class="text-sm text-white text-center">Puerto Comercial - a 2,9 km</p>
           </div>
         </div>
 
         <div class="group relative overflow-hidden rounded-2xl shadow-md">
-          <Image src={bendu} alt="Recitales y Eventos" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+          <Image 
+  src={bendu} 
+  alt="Recitales y Eventos" 
+  width={800}    /* Ajustá este valor según el ancho que ocupe en PC */
+  height={600}   /* Mantené la proporción para que no se deforme */
+  widths={[400, 800]} /* Crea versiones livianas para celulares */
+  sizes="(max-width: 600px) 400px, 800px" 
+  format="webp"  /* Formato de próxima generación que te pide Google */
+  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+/>
           <div class="absolute bottom-0 left-0 right-0 bg-black/50 p-3">
             <p class="text-sm text-white text-center">Bendu Arena - a 3,3 km</p>
           </div>
