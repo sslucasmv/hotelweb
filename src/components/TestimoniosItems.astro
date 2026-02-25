@@ -1,0 +1,19 @@
+---
+import { Icon } from 'astro-icon/components';
+const { desc, nombre } = Astro.props;
+---
+
+<div class="p-8 rounded-2xl border bg-sky-ocean/5 border-blue-ocean/30 shadow-sm flex flex-col h-full">
+    {/* Contenedor de estrellas: ahora con el aria-label correcto y sin duplicados */}
+    <div class="flex text-[#febb02] mb-4" aria-label="Calificación de 5 estrellas">
+        {Array.from({ length: 5 }).map(() => (
+            <Icon name="material-symbols:star-rounded" class="w-6 h-6" />
+        ))}
+    </div>
+
+    {/* El comentario: flex-grow hace que todos los textos ocupen el mismo alto si están en grilla */}
+    <p class="text-gray-600 italic mb-6 flex-grow">"{desc}"</p>
+
+    {/* El nombre: alineado a la derecha */}
+    <span class="block font-bold text-right text-gray-500">- {nombre}</span>
+</div>

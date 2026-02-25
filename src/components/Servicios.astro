@@ -1,77 +1,71 @@
 ---
-import { Icon } from 'astro-icon/components';
+import ServiciosItems from '../components/ServiciosItems.astro';
 import { Image } from 'astro:assets';
 import cafe from '../assets/images/cafe.jpg';
 ---
 
-
 <section class="px-6 bg-white py-10">
-<div class="max-w-7xl mx-auto"> 
-<h2 class="text-3xl font-bold text-center md:text-left mb-6 text-blue-ocean">Nuestros Servicios</h2>
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
-<!-- Left Column: Services Grid -->
+  <div class="max-w-7xl mx-auto"> 
+    <h2 class="text-3xl font-bold text-center md:text-left mb-6 text-blue-ocean">Nuestros Servicios</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+    <!-- Left Column: Services Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
 
-<div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        <ServiciosItems 
+          name="wifi" 
+          titulo="Wifi Gratuito" 
+          descripcion="En todo el hotel" 
+        />
 
-<div class="flex flex-col items-center p-4 rounded-xl border border-gray-dark/20 shadow-sm bg-gray">
-<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-3 ">
-<Icon name="material-symbols:wifi" class="text-gray-dark/70 text-xl w-6 h-6" />
-</div>
-<h3 class="text-m font-bold  text-gray-dark/90">Wi-Fi Gratuito</h3>
-<p class="text-gray-600 text-[12px]">En todo el hotel.</p>
-</div>
-<div class="flex flex-col items-center p-4 rounded-xl border border-gray-dark/20 shadow-sm bg-gray">
-<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-3">
-<Icon name="material-symbols:coffee" class="text-gray-dark/70 text-xl w-6 h-6" />
-</div>
-<h3 class="text-m font-bold text-gray-dark/90">Desayuno incluido</h3>
-<p class="text-gray-600 text-[12px]">Variedad de productos.</p>
-</div>
-<div class="flex flex-col items-center p-4 rounded-xl border border-gray-dark/20 shadow-sm bg-gray">
-<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-3">
-<Icon name="material-symbols:cleaning-services-outline" class="text-gray-dark/70 text-xl w-6 h-6" />
-</div>
-<h3 class="text-m font-bold text-gray-dark/90">Limpieza Diaria</h3>
-<p class="text-gray-600 text-[12px]">Protocolos rigurosos</p>
-</div>
-<div class="flex flex-col items-center p-4 rounded-xl border border-gray-dark/20 shadow-sm bg-gray">
-<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-3">
-<Icon name="material-symbols:concierge-outline" class="text-gray-dark/70 text-xl w-6 h-6" />
-</div>
-<h3 class="text-m font-bold text-gray-dark/90">Recepción 24h</h3>
-<p class="text-gray-600 text-[12px]">Atención continua</p>
-</div>
-<div class="flex flex-col items-center p-4 rounded-xl border border-gray-dark/20 shadow-sm bg-gray">
-<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-3">
-<Icon name="material-symbols:paid-outline" class="text-gray-dark/70 text-xl w-6 h-6" />
-</div>
-<h3 class="text-m font-bold text-gray-dark/90">Medios de pago</h3>
-<p class="text-gray-600 text-[12px]">Comodidad y beneficios.</p>
-</div>
-<div class="flex flex-col items-center p-4 rounded-xl border border-gray-dark/20 shadow-sm bg-gray">
-<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-3">
-<Icon name="material-symbols:tv-outline" class="text-gray-dark/70 w-6 h-6" />
-</div>
-<h3 class="text-m font-bold text-gray-dark/90">Tv por cable</h3>
-<p class="text-gray-600 text-[12px]">Equipamiento moderno</p>
-</div>
-</div>
-<!-- Right Column: Breakfast Image with Overlay -->
-<div class="relative rounded-2xl overflow-hidden shadow-lg group h-64">
- <Image 
-  src={cafe} 
-  alt="Desayuno incluido" 
-  width={800}    /* Ajuste para escritorio */
-  height={600}   /* Mantiene proporción 4:3 o 3:2 según tu diseño */
-  widths={[400, 800]} 
-  sizes="(max-width: 600px) 400px, 800px" 
-  format="webp"
-  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-/>
-<div class="absolute inset-0 bg-black/40 flex items-center justify-center p-8 text-center">
-<h4 class="text-white text-2xl font-bold leading-tight">Desayuno incluido con amplia variedad de productos</h4>
-</div>
-</div>
-</div>
-</div>
+        <ServiciosItems 
+          name="coffee-outline" 
+          titulo="Desayuno incluido" 
+          descripcion="Variedad de productos." 
+        />
+
+          <ServiciosItems 
+          name="cleaning-services-outline" 
+          titulo="Limpieza diaria" 
+          descripcion="Cambio de ropa blanca." 
+        />
+
+          <ServiciosItems 
+          name="concierge-outline" 
+          titulo="Recepción 24 hs" 
+          descripcion="Atención continua." 
+        />
+
+          <ServiciosItems 
+          name="paid-outline" 
+          titulo="Metodos de pago" 
+          descripcion="Comodidad y beneficios." 
+        />
+
+          <ServiciosItems 
+          name="tv-outline" 
+          titulo="Tv por cable" 
+          descripcion="Habitaciones con tv/cable" 
+        />
+
+      </div>
+
+    <!-- Right Column: Breakfast Image with Overlay -->
+      <div class="relative rounded-2xl overflow-hidden shadow-lg group h-64">
+        <Image 
+          src={cafe} 
+          alt="Desayuno incluido" 
+          width={800} 
+          height={600}
+          widths={[400, 800]} 
+          sizes="(max-width: 1024px) 100vw, 50vw" // Mejoramos la precisión
+          format="webp"
+          loading="lazy" // Como está después del Hero, que cargue al scrollear
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+        />
+        <div class="absolute inset-0 bg-black/55 flex items-center justify-center p-8 text-center">
+          <h4 class="text-white text-2xl font-bold leading-tight">Desayuno incluido con amplia variedad de productos</h4>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
