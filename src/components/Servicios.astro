@@ -1,5 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+import cafe from '../assets/images/cafe.jpg';
 ---
 
 
@@ -56,7 +58,16 @@ import { Icon } from 'astro-icon/components';
 </div>
 <!-- Right Column: Breakfast Image with Overlay -->
 <div class="relative rounded-2xl overflow-hidden shadow-lg group h-64">
-<img alt="Desayuno Continental" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCI_GlQ66CJZbCK5ybzg3HmxkmD142aVywjIggXz3YULp9Mjyfh1RxzAtoHPnETZw-3Hu-zDZaRBJQoiy7dCXa1uV0MHqYW53kni6Aup7hMQug_AZxiVF10qYvZzTv3JJ9MLZLW9fdHY0DTnyO8aRLMA0W-zcsp-Ov2hZl9TqkjMtWYo0GUd5EFTMZlyqpz3bKM6QkKuWnJSPoSjk81KwnziWbdhg7itvgkoWH0GlzdfeDqJEvsFJIJZae4TX7k3EY_dD0PYIWCg1w"/>
+ <Image 
+  src={cafe} 
+  alt="Desayuno incluido" 
+  width={800}    /* Ajuste para escritorio */
+  height={600}   /* Mantiene proporción 4:3 o 3:2 según tu diseño */
+  widths={[400, 800]} 
+  sizes="(max-width: 600px) 400px, 800px" 
+  format="webp"
+  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+/>
 <div class="absolute inset-0 bg-black/40 flex items-center justify-center p-8 text-center">
 <h4 class="text-white text-2xl font-bold leading-tight">Desayuno incluido con amplia variedad de productos</h4>
 </div>
