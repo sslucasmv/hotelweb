@@ -4,6 +4,16 @@ import puertoMardelplata from '../assets/images/puertomardelplata.jpg';
 import parqueIndustrial from '../assets/images/parqueindustrial.jpg'; 
 import centralElectrica from '../assets/images/centraleletrica.jpeg';
 import { Icon } from 'astro-icon/components';
+
+import ImagenesServicio from '../components/ImagenesServicio.astro';
+
+const lugares = [
+  { nombre: 'Puerto Industrial', foto: puertoMardelplata },
+  { nombre: 'Parque Industrial', foto: parqueIndustrial },
+  { nombre: 'central Electrica',  foto: centralElectrica  },
+];
+
+
 ---
 <section class="px-6 py-16 pb-20 border-t border-gray-light bg-gray-light/50">
   <div class="max-w-7xl mx-auto">
@@ -23,31 +33,16 @@ import { Icon } from 'astro-icon/components';
         </div>
 
         <div class="mt-auto grid grid-cols-3 gap-4">
-          <div class="group">
-            <div class="aspect-square w-full rounded-xl overflow-hidden shadow-sm border border-gray-100">
-              <Image src={puertoMardelplata} alt="Puerto Comercial" class="w-full h-full object-cover transition-transform group-hover:scale-110" />
-            </div>
-            <p class="text-[11px] font-bold text-gray-400 mt-2 text-center uppercase tracking-widest">Puerto</p>
-          </div>
-          <div class="group">
-            <div class="aspect-square w-full rounded-xl overflow-hidden shadow-sm border border-gray-100">
-              <Image src={parqueIndustrial} alt="Parque Industrial" class="w-full h-full object-cover transition-transform group-hover:scale-110" />
-            </div>
-            <p class="text-[11px] font-bold text-gray-400 mt-2 text-center uppercase tracking-widest">Industrial</p>
-          </div>
-          <div class="group">
-            <div class="aspect-square w-full rounded-xl overflow-hidden shadow-sm border border-gray-100">
-              <Image src={centralElectrica} alt="Central Eléctrica" class="w-full h-full object-cover transition-transform group-hover:scale-110" />
-            </div>
-            <p class="text-[11px] font-bold text-gray-400 mt-2 text-center uppercase tracking-widest">Energía</p>
-          </div>
+          {lugares.map((item) => (
+    <ImagenesServicio nombre={item.nombre} imagen={item.foto} />
+  ))}
         </div>
       </div>
 
       <div class="flex flex-col">
         <div class="bg-white p-8 rounded-2xl border border-blue-100 shadow-sm flex flex-col h-full">
           <div class="mb-6">
-            <h3 class="text-blue-ocean font-bold text-lg uppercase tracking-widest mb-2">Alojamiento para empresas</h3>
+            <h3 class="text-golden-sun font-bold text-lg uppercase tracking-widest mb-2">Alojamiento para empresas</h3>
             <p class="text-gray-700 text-ms leading-relaxed">
               ¿Necesita alojamiento para sus empleados? Póngase en contacto con nosotros para brindarle asesoramiento personalizado en cuanto a la disposición de habitaciones y precios personalizados para empresas.
             </p>
@@ -84,9 +79,9 @@ import { Icon } from 'astro-icon/components';
       href="https://wa.me/549223XXXXXXX?text=Hola!%20Me%20gustaría%20pedir%20presupuesto%20por%20una%20estancia%20en%20el%20Hotel." 
       target="_blank" 
       rel="noopener noreferrer"
-      class="group bg-blue-600 text-white font-bold py-2.5 px-6 rounded-full 
+      class="group bg-green-600 text-white font-bold py-2.5 px-6 rounded-full 
              text-sm transition-all duration-300 ease-in-out
-             md:hover:bg-blue-700 md:hover:-translate-y-0.5 
+             md:hover:bg-green-700 md:hover:-translate-y-0.5 
              active:scale-95 flex items-center gap-2 shadow-md"
     >
       Pedir presupuesto
