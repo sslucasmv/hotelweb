@@ -1,19 +1,30 @@
+---
+
+import { Icon } from 'astro-icon/components';
+
+---
+
 <section class="px-6 py-10 bg-gray-light">
     <div class="max-w-7xl mx-auto">
-        <div class="bg-gradient-to-r from-sky-100 via-white/40 to-blue-ocean/80 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-8 shadow-lg shadow-blue-ocean/5 p-8 md:py-8 md:px-12 border-none">
+        <div class="bg-slate-400/70 rounded-3xl flex border border-stone-500/20 flex-col md:flex-row items-center justify-between gap-8 shadow-lg shadow-blue-ocean/5 p-8 md:py-8 md:px-12 ">
             
             <div class="flex-1 text-center md:text-left">
-                <h3 class="font-bold mb-1 text-xl text-blue-900/90 leading-tight">
+                <h3 class="font-bold mb-1 text-xl text-white leading-tight [text-shadow:_0_2px_2px_rgb(0_0_0_/_30%)]">
                     Puedes utilizar nuestro sistema de reservas para mayor comodidad
                 </h3>
-                <p class="text-blue-800/70 font-medium text-sm">
+                <p class="text-zinc-100 font-medium text-ms">
                     Garantiza tu habitación hoy mismo con confirmación inmediata.
                 </p>
             </div>
 
-            <button class="bg-sand-orange border border-sand-dark hover:bg-sand-dark text-sand-mdark font-bold rounded-xl transition-all shadow-md shadow-golden-sun/20 whitespace-nowrap py-3 px-8 cursor-pointer text-base">
-                Reserva Ahora!
-            </button>
+            
+    <a href="" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    class="bg-emerald-500/80 border border-emerald-600 hover:bg-emerald-600 hover:text-white text-white font-bold rounded-xl transition-all shadow-md shadow-golden-sun/20 whitespace-nowrap py-4 px-12 cursor-pointer text-base flex items-center justify-center gap-2 group [text-shadow:_0_2px_2px_rgb(0_0_0_/_30%)]"> 
+        Reserva Ahora!
+    <Icon name="material-symbols:calendar-check" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+    </a>    
         </div>
     </div>
 </section> 
