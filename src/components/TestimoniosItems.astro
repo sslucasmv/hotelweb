@@ -3,7 +3,7 @@ import { Icon } from 'astro-icon/components';
 const { desc, nombre } = Astro.props;
 ---
 
-<div class="p-8 rounded-2xl border bg-sky-ocean/5 border-blue-ocean/30 shadow-sm flex flex-col h-full">
+<div class="p-8 rounded-2xl border bg-slate-200/50 border-blue-ocean/30 shadow-sm flex flex-col h-full">
     {/* Contenedor de estrellas: ahora con el aria-label correcto y sin duplicados */}
     <div class="flex text-[#febb02] mb-4" aria-label="Calificación de 5 estrellas">
         {Array.from({ length: 5 }).map(() => (
