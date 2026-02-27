@@ -1,20 +1,46 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import RoomCard from '../components/RoomCard.astro';
+import RoomModal from '../components/RoomModal.astro';
+
+// Importamos el JSON con la info
+import datosHabitaciones from '../data/habitaciones.json';
+
+// El glob para las imágenes sigue igual
+const imagenesCargadas = import.meta.glob('../assets/images/habitaciones/*.{jpeg,jpg,JPG,png,webp}', { eager: true });
+
+const getFotos = (id) => {
+  return Object.values(imagenesCargadas)
+    .map((img: any) => img.default.src)
+    .filter((path) => {
+      const fileName = path.split('/').pop().toLowerCase();
+      return fileName.includes(id.toLowerCase());
+    });
+};
+
+// Mapeamos los datos del JSON para agregarles las fotos
+const habitaciones = datosHabitaciones.map(hab => ({
+  ...hab,
+  fotos: getFotos(hab.id)
+}));
 ---
 
 <BaseLayout title="Habitaciones">
-    <section class="py-20 px-6 max-w-7xl mx-auto">
-        <h1 class="text-4xl font-bold text-red-600 mb-8">Nuestras Habitaciones</h1>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
-                <div class="h-48 bg-gray-300"></div> <div class="p-6">
-                    <h3 class="text-xl font-bold">Habitación Doble Estándar</h3>
-                    <p class="text-gray-600 mt-2">Cama matrimonial, Wi-Fi y vista al centro.</p>
-                    <p class="text-red-600 font-bold mt-4 text-lg">$25.000 / noche</p>
-                </div>
-            </div>
-            
-            </div>
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+    
+    <div class="mb-12 border-b border-b-1 pb-6 border-slate-300">
+            <h2 class="text-4xl md:text-4xl font-bold text-blue-ocean tracking-tight mb-4">
+                Nuestras habitaciones
+            </h2>
+            <p class="text-slate-600 text-lg">
+                Explorá nuestra exclusiva galería y seleccioná la habitación ideal para tu próxima estadía a metros del mar.
+            </p>
+        </div>
+
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {habitaciones.map((room) => <RoomCard {...room} />)}
+        </div>
     </section>
+    <RoomModal />
 </BaseLayout>

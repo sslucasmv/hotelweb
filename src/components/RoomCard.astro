@@ -1,0 +1,65 @@
+---
+// src/components/RoomCard.astro
+import { Icon } from 'astro-icon/components';
+
+const { titulo, desc, fotos, categoria, tipo } = Astro.props;
+
+// Imagen de respaldo
+const portada = (fotos && fotos.length > 0) ? fotos[0] : "https://via.placeholder.com/600x450?text=Hotel+Soleares";
+
+// Condición Premium
+const esPremium = categoria === "Superior";
+---
+
+<div class="group flex flex-col bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 relative">
+  
+  {esPremium && (
+    <div class="absolute top-2 left-2 mt-1 ml-1 z-20 bg-yellow-400 text-white p-1.5 rounded-lg shadow-lg flex items-center justify-center border border-amber-300">
+      <Icon name="material-symbols:crown" class="text-white" />
+    </div>
+  )}
+
+  <div 
+    class="relative overflow-hidden aspect-[4/3] cursor-pointer btn-open-modal" 
+    data-titulo={titulo} 
+    data-desc={desc} 
+    data-fotos={JSON.stringify(fotos)}
+  >
+    <img 
+      class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700" 
+      src={portada} 
+      alt={titulo}
+    />
+    
+    <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold text-blue-ocean uppercase tracking-widest shadow-sm z-10">
+      {categoria}
+    </div>
+  </div>
+
+  <div class="p-6 flex flex-col flex-1">
+    <div class="mb-4">
+      <h3 class="text-xl font-bold text-slate-800 flex justify-between items-center">
+        {titulo}
+        <span class="text-xs font-medium text-slate-400 bg-slate-50 px-2 py-1 rounded-md">-{tipo}</span>
+      </h3>
+      <p class="text-slate-600 text-sm mt-2 line-clamp-2 leading-relaxed">
+        {desc}
+      </p>
+    </div>
+
+    <div class="mt-auto pt-4 border-t border-slate-50">
+  <button 
+    class="group cursor-pointer w-full bg-blue-50 text-blue-ocean hover:bg-blue-ocean hover:text-white py-3 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2 btn-open-modal"
+    data-titulo={titulo} 
+    data-desc={desc} 
+    data-fotos={JSON.stringify(fotos)}
+  >
+    Ver detalles
+    <Icon 
+      name="material-symbols:visibility-outline" 
+      class="w-6 h-6 fill-current text-current transition-colors" 
+    />
+  </button>
+</div>
+  </div>
+</div>

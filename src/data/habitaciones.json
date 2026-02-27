@@ -1,0 +1,127 @@
+[
+  {
+    "id": "h2-",
+    "titulo": "Habitación 2",
+    "tipo": "Doble",
+    "categoria": "Superior",
+    "desc": "Habitacion amplia, con vista al mar, mesa y sillas para desayunar. "
+  },
+  {
+    "id": "h3-",
+    "titulo": "Habitación 3",
+    "tipo": "Doble",
+    "categoria": "Estándar",
+    "desc": "Decoración minimalista y ventanales de piso a techo con vista al jardín."
+  },
+    {
+    "id": "h4-",
+    "titulo": "Habitación 4",
+    "tipo": "Triple",
+    "categoria": "Estándar",
+    "desc": "Decoración minimalista y ventanales con vista al Mar."
+  },
+     {
+    "id": "h5-",
+    "titulo": "Habitación 5",
+    "tipo": "Triple",
+    "categoria": "Estándar",
+    "desc": "Decoración minimalista y ventanales con vista al Mar."
+  },
+     {
+    "id": "h6-",
+    "titulo": "Habitación 6",
+    "tipo": "Doble",
+    "categoria": "Estándar",
+    "desc": "Habitacion luminosa con dos camas comodas de una plaza."
+  } ,
+  {
+    "id": "h7-",
+    "titulo": "Habitación 7",
+    "tipo": "Triple",
+    "categoria": "Superior",
+    "desc": "Habitacion amplia con dos tres comodas camas."
+  },
+     {
+    "id": "h8-",
+    "titulo": "Habitación 8",
+    "tipo": "Cuadruple",
+    "categoria": "Estándar",
+    "desc": "Habitacion luminosa con dos camas comodas de una plaza."
+  } ,
+    {
+    "id": "h9-",
+    "titulo": "Habitación 9",
+    "tipo": "Doble",
+    "categoria": "Estándar",
+    "desc": "Habitacion luminosa, amplia y con vista al mar."
+  } ,
+  {
+    "id": "h10-",
+    "titulo": "Habitación 10",
+    "tipo": "Triple",
+    "categoria": "Estándar",
+    "desc": "Habitacion luminosa, ideal para una familia."
+  },
+   {
+    "id": "h11-",
+    "titulo": "Habitación 11",
+    "tipo": "Triple",
+    "categoria": "Estándar",
+    "desc": "Habitacion con tres camas de una plaza."
+  } ,
+   {
+    "id": "h12-",
+    "titulo": "Habitación 12",
+    "tipo": "Triple",
+    "categoria": "Estándar",
+    "desc": "Habitacion doble matrimonial."
+  } ,
+   {
+    "id": "h13-",
+    "titulo": "Habitación 13",
+    "tipo": "Triple",
+    "categoria": "Estándar",
+    "desc": "Habitacion doble matrimonial y cama."
+  } ,
+   {
+    "id": "h14-",
+    "titulo": "Habitación 14",
+    "tipo": "Triple",
+    "categoria": "Superior",
+    "desc": "Habitacion amplia y luminosa con vista al mar"
+  }  ,
+   {
+    "id": "h15-",
+    "titulo": "Habitación 15",
+    "tipo": "Doble",
+    "categoria": "Estándar",
+    "desc": "Habitacion doble,luminosa con vista al mar"
+  }  ,
+   {
+    "id": "h16-",
+    "titulo": "Habitación 16",
+    "tipo": "Doble",
+    "categoria": "Estándar",
+    "desc": "Habitacion doble,luminosa con vista al mar"
+  } ,
+   {
+    "id": "h17-",
+    "titulo": "Habitación 17",
+    "tipo": "Triple",
+    "categoria": "Estándar",
+    "desc": "Habitacion doble,luminosa con vista al mar"
+  } ,
+   {
+    "id": "h18-",
+    "titulo": "Habitación 18",
+    "tipo": "Doble",
+    "categoria": "Estándar",
+    "desc": "Habitacion doble,luminosa con vista al mar"
+  },{
+    "id": "h19-",
+    "titulo": "Habitación 19",
+    "tipo": "Cuadruple",
+    "categoria": "Superior",
+    "desc": "Ideal para grupos, cuatro camas comodas y amplia baño."
+  }    
+]

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Coastal Hotel - Nuestras Habitaciones</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries">
+    let currentRoomImages = [];
+    let currentSlideIndex = 0;
+
+    function openRoomModal(title, desc, images) {
+        document.getElementById('modal-room-title').innerText = title;
+        document.getElementById('modal-room-desc').innerText = desc;
+        currentRoomImages = JSON.parse(images);
+        currentSlideIndex = 0;
+        
+        const container = document.getElementById('modal-img-container');
+        container.innerHTML = '';
+        currentRoomImages.forEach(src => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.className = 'modal-slide-item';
+            container.appendChild(img);
+        });
+
+        updateModalImage();
+        document.getElementById('room-modal').classList.remove('hidden');
+    }
+
+    function closeRoomModal() {
+        document.getElementById('room-modal').classList.add('hidden');
+    }
+
+    function changeSlide(direction) {
+        if (currentRoomImages.length === 0) return;
+        currentSlideIndex = (currentSlideIndex + direction + currentRoomImages.length) % currentRoomImages.length;
+        updateModalImage();
+    }
+
+    function updateModalImage() {
+        const container = document.getElementById('modal-img-container');
+        if (container) {
+            container.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+        }
+    }
+
+    window.onclick = function(event) {
+        let modal = document.getElementById('room-modal');
+        if (event.target == modal) closeRoomModal();
+    }
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4e97b1",
+                        "background-light": "#f6f7f7",
+                        "background-dark": "#151b1d",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .modal-active { overflow: hidden; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    
+        #modal-main-img {
+            transition: opacity 0.3s ease-in-out;
+        }
+    
+        #modal-img-container {
+            display: flex;
+            transition: transform 1.2s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+            width: 100%;
+            height: 100%;
+        }
+        .modal-slide-item {
+            min-width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+
+<!-- Room Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Room Cards Loop (Simulated for Room 2 to 14) -->
+<!-- Card Component (Repeated 13 times with data) -->
+<!-- Habitación 2 -->
+<div class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700">
+<div class="relative overflow-hidden aspect-[4/3] cursor-pointer" onclick="openRoomModal('Habitación 2', 'Suite panorámica con cama king y terraza privada frente al arrecife. Experimente la máxima comodidad con vistas ininterrumpidas.', '[&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDvisIaej5zZX5VoS-LG_13T0fE9tAVoz3Rly4aB5ONlpgLwX25l1pHN03YpC6NIIRSRKlppAnocCCIUyKkXKqk7zFlno7XyoO1YvnQ9Jw_5fYISctoqI7w5tNZYzV440NJgzoB_-lPn65BI_Po5SAY6_TAju5knmwTn_eDNK3EUcWB-OXYNnEIkBFYphGa0Z1KPpqtI8m21emT9D9fPWkW4fB0BEJhkJF6E8XVkQ_PqlX7fl3cOzs3uvyHyliWWkusxXaPqYWZwZU&quot;, &quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBPtqcsqL_DmhdbsrDdNnXK6vfYSO_XudZlgroRXNUT6KPU4vpkqn6Agb9uJOxo2sBy1IjRK8d3NaOg8ykRF6KwSyLFWl_IJUp5cLjUGff8nwB2qP7t2wNEMBWDNlSRzBGNr1u8z6v3AC-t9nLX1NzygknAOOJ81A9OTMsE7KeeLzPBRp6MaFadPClbNX_mkzeKtLUr8fBbqbqwwGwDFDv8AdTqpVt9y6DBAreHhhec52-j50zjRF1X-OkkpwhBdnGuIa9qKFeOhio&quot;, &quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCRqsMLVGk1TeBKyi34ceThvE4w90pHvEa8yKZJgQpbJAcw4hl62bB_fRLy4TrZvqcPnP-kQ6Bd2tEAywZl6HkSTQ52fmpMQkFSNF_gH6Kawu0A9pouB934Uc27X70KoUko_QFnuiCffoHGMfVgbtm07uWH1CDNxXtS9pMGwlpXgcnTWjVvgrSk5KjuFU1oYbJHNx55ZyX3y-PluQWL86oWGqwllpSc9R7OmK6BdKglxGyrDn9ebVQ98gzh2Y8Gg07SyFOw_WioAlQ&quot;]')">
+<img class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500" data-alt="Modern coastal bedroom with ocean view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvisIaej5zZX5VoS-LG_13T0fE9tAVoz3Rly4aB5ONlpgLwX25l1pHN03YpC6NIIRSRKlppAnocCCIUyKkXKqk7zFlno7XyoO1YvnQ9Jw_5fYISctoqI7w5tNZYzV440NJgzoB_-lPn65BI_Po5SAY6_TAju5knmwTn_eDNK3EUcWB-OXYNnEIkBFYphGa0Z1KPpqtI8m21emT9D9fPWkW4fB0BEJhkJF6E8XVkQ_PqlX7fl3cOzs3uvyHyliWWkusxXaPqYWZwZU"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-primary">
+                            Desde $250
+                        </div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<h3 class="text-lg font-bold mb-1 flex items-baseline justify-between w-full"><span>Habitación 2</span><span class="text-sm font-medium text-slate-500 dark:text-slate-400">- triple</span></h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-4 line-clamp-2">Suite panorámica con cama king y terraza privada frente al arrecife.</p>
+<div class="mt-auto">
+<button class="w-full bg-primary/10 text-primary hover:bg-primary hover:text-white py-2 rounded-lg text-sm font-bold transition-all flex items-center justify-center gap-2" onclick="openRoomModal('Habitación 2', 'Suite panorámica con cama king y terraza privada frente al arrecife. Experimente la máxima comodidad con vistas ininterrumpidas.', '[&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDvisIaej5zZX5VoS-LG_13T0fE9tAVoz3Rly4aB5ONlpgLwX25l1pHN03YpC6NIIRSRKlppAnocCCIUyKkXKqk7zFlno7XyoO1YvnQ9Jw_5fYISctoqI7w5tNZYzV440NJgzoB_-lPn65BI_Po5SAY6_TAju5knmwTn_eDNK3EUcWB-OXYNnEIkBFYphGa0Z1KPpqtI8m21emT9D9fPWkW4fB0BEJhkJF6E8XVkQ_PqlX7fl3cOzs3uvyHyliWWkusxXaPqYWZwZU&quot;, &quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBPtqcsqL_DmhdbsrDdNnXK6vfYSO_XudZlgroRXNUT6KPU4vpkqn6Agb9uJOxo2sBy1IjRK8d3NaOg8ykRF6KwSyLFWl_IJUp5cLjUGff8nwB2qP7t2wNEMBWDNlSRzBGNr1u8z6v3AC-t9nLX1NzygknAOOJ81A9OTMsE7KeeLzPBRp6MaFadPClbNX_mkzeKtLUr8fBbqbqwwGwDFDv8AdTqpVt9y6DBAreHhhec52-j50zjRF1X-OkkpwhBdnGuIa9qKFeOhio&quot;, &quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCRqsMLVGk1TeBKyi34ceThvE4w90pHvEa8yKZJgQpbJAcw4hl62bB_fRLy4TrZvqcPnP-kQ6Bd2tEAywZl6HkSTQ52fmpMQkFSNF_gH6Kawu0A9pouB934Uc27X70KoUko_QFnuiCffoHGMfVgbtm07uWH1CDNxXtS9pMGwlpXgcnTWjVvgrSk5KjuFU1oYbJHNx55ZyX3y-PluQWL86oWGqwllpSc9R7OmK6BdKglxGyrDn9ebVQ98gzh2Y8Gg07SyFOw_WioAlQ&quot;]')">
+                                Ver detalles <span class="material-symbols-outlined text-sm">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Repeat structure for Rooms 3-14 with varied details -->
+<!-- Card 3 -->
+<div class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700">
+<div class="relative overflow-hidden aspect-[4/3] cursor-pointer" onclick="openRoomModal('Habitación 3', 'Decoración minimalista y ventanales de piso a techo con vista al jardín tropical.', '[&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCRqsMLVGk1TeBKyi34ceThvE4w90pHvEa8yKZJgQpbJAcw4hl62bB_fRLy4TrZvqcPnP-kQ6Bd2tEAywZl6HkSTQ52fmpMQkFSNF_gH6Kawu0A9pouB934Uc27X70KoUko_QFnuiCffoHGMfVgbtm07uWH1CDNxXtS9pMGwlpXgcnTWjVvgrSk5KjuFU1oYbJHNx55ZyX3y-PluQWL86oWGqwllpSc9R7OmK6BdKglxGyrDn9ebVQ98gzh2Y8Gg07SyFOw_WioAlQ&quot;, &quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAS8MoyAo5wHV-l1Zb8LUOkspqQMZWfMIPsnPL96f9oRVHKa5C7PDGhoZgOeQ2YpeXhwtmRnyZlqcCKq0oCVy9kxKA5cNwlsa3Ay5A2J4ucFqEgUuC93AQGYz2Oqnq-_nSCudEJT6GdHPlAn8HinURFguoqVgbRduONfMObo5TMigZZ3rDEhYMEt_qtsZNINOlmYM9Fz0xCiARBmBvvMIc27a-ZSqk_c4MdVK5jxY0LA8RIBZg_kPZJRLxF92ydYXtw5ZaRO5kg1Es&quot;, &quot;https://lh3.googleusercontent.com/aida-public/AB6AXuC4XDy4dyGY1y-7-NoJzdD3Fs2qyn5o01wBefo7NGd6tHrMmEHkKdWcub7aB3GorOoDdqITxoPvW2gclGC4eAreyBVxV1hWlh3qEtEs7TPntXHbf3OAk4aU_RX-b9nm5zFFigtwDD91xX4lIA6WNTPGhs2SyngaZ4Ziy7l_eRRJLOn9uir31lzRzcowjFgcLG9iJ5E2aSa-in0KzfvpxkWE4o9IO5v6_ACOG1gXpsLI2qVOYag2Cf6CfEk0FltFgHgl8-5F4KOjmKE&quot;]')">
+<img class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500" data-alt="Boutique hotel room with linen textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRqsMLVGk1TeBKyi34ceThvE4w90pHvEa8yKZJgQpbJAcw4hl62bB_fRLy4TrZvqcPnP-kQ6Bd2tEAywZl6HkSTQ52fmpMQkFSNF_gH6Kawu0A9pouB934Uc27X70KoUko_QFnuiCffoHGMfVgbtm07uWH1CDNxXtS9pMGwlpXgcnTWjVvgrSk5KjuFU1oYbJHNx55ZyX3y-PluQWL86oWGqwllpSc9R7OmK6BdKglxGyrDn9ebVQ98gzh2Y8Gg07SyFOw_WioAlQ"/>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<h3 class="text-lg font-bold mb-1 flex items-baseline justify-between w-full"><span>Habitación 3</span><span class="text-sm font-medium text-slate-500 dark:text-slate-400">- triple</span></h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-4 line-clamp-2">Decoración minimalista y ventanales de piso a techo con vista al jardín tropical.</p>
+<div class="mt-auto">
+<button class="w-full bg-primary/10 text-primary hover:bg-primary hover:text-white py-2 rounded-lg text-sm font-bold transition-all flex items-center justify-center gap-2" onclick="openRoomModal('Habitación 3', 'Decoración minimalista y ventanales de piso a techo con vista al jardín tropical.', '[&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCRqsMLVGk1TeBKyi34ceThvE4w90pHvEa8yKZJgQpbJAcw4hl62bB_fRLy4TrZvqcPnP-kQ6Bd2tEAywZl6HkSTQ52fmpMQkFSNF_gH6Kawu0A9pouB934Uc27X70KoUko_QFnuiCffoHGMfVgbtm07uWH1CDNxXtS9pMGwlpXgcnTWjVvgrSk5KjuFU1oYbJHNx55ZyX3y-PluQWL86oWGqwllpSc9R7OmK6BdKglxGyrDn9ebVQ98gzh2Y8Gg07SyFOw_WioAlQ&quot;, &quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAS8MoyAo5wHV-l1Zb8LUOkspqQMZWfMIPsnPL96f9oRVHKa5C7PDGhoZgOeQ2YpeXhwtmRnyZlqcCKq0oCVy9kxKA5cNwlsa3Ay5A2J4ucFqEgUuC93AQGYz2Oqnq-_nSCudEJT6GdHPlAn8HinURFguoqVgbRduONfMObo5TMigZZ3rDEhYMEt_qtsZNINOlmYM9Fz0xCiARBmBvvMIc27a-ZSqk_c4MdVK5jxY0LA8RIBZg_kPZJRLxF92ydYXtw5ZaRO5kg1Es&quot;, &quot;https://lh3.googleusercontent.com/aida-public/AB6AXuC4XDy4dyGY1y-7-NoJzdD3Fs2qyn5o01wBefo7NGd6tHrMmEHkKdWcub7aB3GorOoDdqITxoPvW2gclGC4eAreyBVxV1hWlh3qEtEs7TPntXHbf3OAk4aU_RX-b9nm5zFFigtwDD91xX4lIA6WNTPGhs2SyngaZ4Ziy7l_eRRJLOn9uir31lzRzcowjFgcLG9iJ5E2aSa-in0KzfvpxkWE4o9IO5v6_ACOG1gXpsLI2qVOYag2Cf6CfEk0FltFgHgl8-5F4KOjmKE&quot;]')">Ver detalles</button>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700">
+<div class="relative overflow-hidden aspect-[4/3] cursor-pointer" onclick="openRoomModal('Habitación 4', 'Elegante espacio con detalles en madera flotante y jacuzzi privado.', '[&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAS8MoyAo5wHV-l1Zb8LUOkspqQMZWfMIPsnPL96f9oRVHKa5C7PDGhoZgOeQ2YpeXhwtmRnyZlqcCKq0oCVy9kxKA5cNwlsa3Ay5A2J4ucFqEgUuC93AQGYz2Oqnq-_nSCudEJT6GdHPlAn8HinURFguoqVgbRduONfMObo5TMigZZ3rDEhYMEt_qtsZNINOlmYM9Fz0xCiARBmBvvMIc27a-ZSqk_c4MdVK5jxY0LA8RIBZg_kPZJRLxF92ydYXtw5ZaRO5kg1Es&quot;, &quot;https://lh3.googleusercontent.com/aida-public/AB6AXuC4XDy4dyGY1y-7-NoJzdD3Fs2qyn5o01wBefo7NGd6tHrMmEHkKdWcub7aB3GorOoDdqITxoPvW2gclGC4eAreyBVxV1hWlh3qEtEs7TPntXHbf3OAk4aU_RX-b9nm5zFFigtwDD91xX4lIA6WNTPGhs2SyngaZ4Ziy7l_eRRJLOn9uir31lzRzcowjFgcLG9iJ5E2aSa-in0KzfvpxkWE4o9IO5v6_ACOG1gXpsLI2qVOYag2Cf6CfEk0FltFgHgl8-5F4KOjmKE&quot;, &quot;https://lh3.googleusercontent.com/aida-public/AB6AXuD10uZIE7pTzmHApvZBKMj6UA4ZyZN4xnj62dYmPowRiVBlUQJM6NqD5IEHMenqj6tGwu_XLWD-T2gl1a_UEGBhXIqRpv63c1o8cjMCdgMmuUGR-HVG4GqJDmKTFDRMUa3ImN_hBbLs3PIDr-88_018zCQP2JOYkC3Xz4jhBI3-82S-6E_COaN33-HZOgPME4TeLhnR30yKz0QXiWC50PVbo7Oyp5s-Ke0GEgSyPeOw9RqztSBOmFwf3iqu2G-fhcF8Qs5p0E9LCzI&quot;]')">
+<img class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500" data-alt="Luxury suite with private balcony" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS8MoyAo5wHV-l1Zb8LUOkspqQMZWfMIPsnPL96f9oRVHKa5C7PDGhoZgOeQ2YpeXhwtmRnyZlqcCKq0oCVy9kxKA5cNwlsa3Ay5A2J4ucFqEgUuC93AQGYz2Oqnq-_nSCudEJT6GdHPlAn8HinURFguoqVgbRduONfMObo5TMigZZ3rDEhYMEt_qtsZNINOlmYM9Fz0xCiARBmBvvMIc27a-ZSqk_c4MdVK5jxY0LA8RIBZg_kPZJRLxF92ydYXtw5ZaRO5kg1Es"/>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<h3 class="text-lg font-bold mb-1 flex items-baseline justify-between w-full"><span>Habitación 4</span><span class="text-sm font-medium text-slate-500 dark:text-slate-400">- triple</span></h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-4 line-clamp-2">Elegante espacio con detalles en madera flotante y jacuzzi privado.</p>
+<div class="mt-auto">
+<button class="w-full bg-primary/10 text-primary hover:bg-primary hover:text-white py-2 rounded-lg text-sm font-bold transition-all flex items-center justify-center gap-2" onclick="openRoomModal('Habitación 4', 'Elegante espacio con detalles en madera flotante y jacuzzi privado.', '[&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAS8MoyAo5wHV-l1Zb8LUOkspqQMZWfMIPsnPL96f9oRVHKa5C7PDGhoZgOeQ2YpeXhwtmRnyZlqcCKq0oCVy9kxKA5cNwlsa3Ay5A2J4ucFqEgUuC93AQGYz2Oqnq-_nSCudEJT6GdHPlAn8HinURFguoqVgbRduONfMObo5TMigZZ3rDEhYMEt_qtsZNINOlmYM9Fz0xCiARBmBvvMIc27a-ZSqk_c4MdVK5jxY0LA8RIBZg_kPZJRLxF92ydYXtw5ZaRO5kg1Es&quot;, &quot;https://lh3.googleusercontent.com/aida-public/AB6AXuC4XDy4dyGY1y-7-NoJzdD3Fs2qyn5o01wBefo7NGd6tHrMmEHkKdWcub7aB3GorOoDdqITxoPvW2gclGC4eAreyBVxV1hWlh3qEtEs7TPntXHbf3OAk4aU_RX-b9nm5zFFigtwDD91xX4lIA6WNTPGhs2SyngaZ4Ziy7l_eRRJLOn9uir31lzRzcowjFgcLG9iJ5E2aSa-in0KzfvpxkWE4o9IO5v6_ACOG1gXpsLI2qVOYag2Cf6CfEk0FltFgHgl8-5F4KOjmKE&quot;, &quot;https://lh3.googleusercontent.com/aida-public/AB6AXuD10uZIE7pTzmHApvZBKMj6UA4ZyZN4xnj62dYmPowRiVBlUQJM6NqD5IEHMenqj6tGwu_XLWD-T2gl1a_UEGBhXIqRpv63c1o8cjMCdgMmuUGR-HVG4GqJDmKTFDRMUa3ImN_hBbLs3PIDr-88_018zCQP2JOYkC3Xz4jhBI3-82S-6E_COaN33-HZOgPME4TeLhnR30yKz0QXiWC50PVbo7Oyp5s-Ke0GEgSyPeOw9RqztSBOmFwf3iqu2G-fhcF8Qs5p0E9LCzI&quot;]')">Ver detalles</button>
+</div>
+</div>
+</div>
+<!-- Rooms 5-14 Placeholder instances for the grid layout -->
+<div class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700">
+<div class="relative overflow-hidden aspect-[4/3] cursor-pointer" onclick="document.getElementById('room-modal').classList.remove('hidden')">
+<img class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500" data-alt="Beachfront hotel room interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4XDy4dyGY1y-7-NoJzdD3Fs2qyn5o01wBefo7NGd6tHrMmEHkKdWcub7aB3GorOoDdqITxoPvW2gclGC4eAreyBVxV1hWlh3qEtEs7TPntXHbf3OAk4aU_RX-b9nm5zFFigtwDD91xX4lIA6WNTPGhs2SyngaZ4Ziy7l_eRRJLOn9uir31lzRzcowjFgcLG9iJ5E2aSa-in0KzfvpxkWE4o9IO5v6_ACOG1gXpsLI2qVOYag2Cf6CfEk0FltFgHgl8-5F4KOjmKE"/>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<h3 class="text-lg font-bold mb-1 flex items-baseline justify-between w-full"><span>Habitación 5</span><span class="text-sm font-medium text-slate-500 dark:text-slate-400">- triple</span></h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-4 line-clamp-2">Doble Queen ideal para familias, con acceso directo a la piscina infinita.</p>
+<div class="mt-auto">
+<button class="w-full bg-primary/10 text-primary hover:bg-primary hover:text-white py-2 rounded-lg text-sm font-bold transition-all flex items-center justify-center gap-2" onclick="document.getElementById('room-modal').classList.remove('hidden')">Ver detalles</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700">
+<div class="relative overflow-hidden aspect-[4/3] cursor-pointer" onclick="document.getElementById('room-modal').classList.remove('hidden')">
+<img class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500" data-alt="Rustic coastal decor bedroom" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD10uZIE7pTzmHApvZBKMj6UA4ZyZN4xnj62dYmPowRiVBlUQJM6NqD5IEHMenqj6tGwu_XLWD-T2gl1a_UEGBhXIqRpv63c1o8cjMCdgMmuUGR-HVG4GqJDmKTFDRMUa3ImN_hBbLs3PIDr-88_018zCQP2JOYkC3Xz4jhBI3-82S-6E_COaN33-HZOgPME4TeLhnR30yKz0QXiWC50PVbo7Oyp5s-Ke0GEgSyPeOw9RqztSBOmFwf3iqu2G-fhcF8Qs5p0E9LCzI"/>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<h3 class="text-lg font-bold mb-1 flex items-baseline justify-between w-full"><span>Habitación 6</span><span class="text-sm font-medium text-slate-500 dark:text-slate-400">- triple</span></h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-4 line-clamp-2">Estilo mediterráneo con balcón sombreado y hamaca tradicional.</p>
+<div class="mt-auto">
+<button class="w-full bg-primary/10 text-primary hover:bg-primary hover:text-white py-2 rounded-lg text-sm font-bold transition-all flex items-center justify-center gap-2" onclick="document.getElementById('room-modal').classList.remove('hidden')">Ver detalles</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700">
+<div class="relative overflow-hidden aspect-[4/3] cursor-pointer" onclick="document.getElementById('room-modal').classList.remove('hidden')">
+<img class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500" data-alt="Cozy room with blue accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDC4RELX6YLFzUCEgq8QH2GqjdLxj30NbFDnkaBasKKycCQqKJq43FV_J4o7xCAnsa7yjMwn4Xnv2bFBlErCYUBItKY5qLdH5DpWufEpn7S1saMAopQmaXVYRsX-BN-Ur6aWTPcTLN4NPPcs_vSxvUuhGQ8a1J3dvoz-9T_A8p2pYsf9rLX5kaxoMg3QBXKbM0380H-VOkkI-AjjLvbs3lDFaxEF35k8BNmxtRprJqo_HH31gtM3IVRGny-EvdWgoPFNDmUThyXE0"/>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<h3 class="text-lg font-bold mb-1 flex items-baseline justify-between w-full"><span>Habitación 7</span><span class="text-sm font-medium text-slate-500 dark:text-slate-400">- triple</span></h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-4 line-clamp-2">Suite romántica en el último piso con vistas de 180 grados al océano.</p>
+<div class="mt-auto">
+<button class="w-full bg-primary/10 text-primary hover:bg-primary hover:text-white py-2 rounded-lg text-sm font-bold transition-all flex items-center justify-center gap-2" onclick="document.getElementById('room-modal').classList.remove('hidden')">Ver detalles</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700">
+<div class="relative overflow-hidden aspect-[4/3] cursor-pointer" onclick="document.getElementById('room-modal').classList.remove('hidden')">
+<img class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500" data-alt="Minimalist grey and blue room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcSuGMiE-oJO8ZhEaicv8b5ojNlGq5aI8GqU9vJ0BGDY8ZeDaOWtxpME7du2WydQDfcW2EDAXFkAuGlc6HYmTdHKuZyFl04_zfluxQPQPqqg3UnzHo_x9ihQkpvNH_Lbz21cxMBCIYmw0UtgN8v0uT4NXB_V6UOmiCtkKXvh14BgkJShB4j7UMbs_Mkr-OQhU2-8kb_GF1Zeru2f3S9xOfNKyd5REcDPx6aYpCQNw2ktGhKKA7-BYbKd3T7eP7rkKCqPgnWF_8NZc"/>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<h3 class="text-lg font-bold mb-1 flex items-baseline justify-between w-full"><span>Habitación 8</span><span class="text-sm font-medium text-slate-500 dark:text-slate-400">- triple</span></h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-4 line-clamp-2">Espacio zen con jardín zen privado y ducha de lluvia exterior.</p>
+<div class="mt-auto">
+<button class="w-full bg-primary/10 text-primary hover:bg-primary hover:text-white py-2 rounded-lg text-sm font-bold transition-all flex items-center justify-center gap-2" onclick="document.getElementById('room-modal').classList.remove('hidden')">Ver detalles</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700">
+<div class="relative overflow-hidden aspect-[4/3] cursor-pointer" onclick="document.getElementById('room-modal').classList.remove('hidden')">
+<img class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500" data-alt="Hotel room with sea view through window" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDN8_lLf1asPOASpqQVjmKZw_jVW0IUvcS3cy8qQSYYjVTSEwZ-5kdr_pupXsAEqDfNxECJj9U7OuIzvB6kFPAOH48q2GpvprbxBg31cwdPaErxWmZOYTLEcgr4muPrVCp9Z3lrEXrPAcQ2R8hrZYYbncJLO5vChOjv_vJ_HkZtsOhtiUX2hANrxlYjmZt6UgNXyVve-tkIcVHtkf3aMbjK8-t4KJxyojzlflsxTEBNQ9jeu3YzTosfbUmBslj6pDQOR9uy4-HqYHA"/>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<h3 class="text-lg font-bold mb-1 flex items-baseline justify-between w-full"><span>Habitación 9</span><span class="text-sm font-medium text-slate-500 dark:text-slate-400">- triple</span></h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-4 line-clamp-2">Inspiración náutica con techos altos y abundante luz natural.</p>
+<div class="mt-auto">
+<button class="w-full bg-primary/10 text-primary hover:bg-primary hover:text-white py-2 rounded-lg text-sm font-bold transition-all flex items-center justify-center gap-2" onclick="document.getElementById('room-modal').classList.remove('hidden')">Ver detalles</button>
+</div>
+</div>
+</div>
+<!-- Add more cards to reach 13 total -->
+<div class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700">
+<div class="relative overflow-hidden aspect-[4/3] cursor-pointer" onclick="document.getElementById('room-modal').classList.remove('hidden')">
+<img class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500" data-alt="Modern hotel interior suite" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeXBynQVZg2e9id3msc6K8jkN0Sv6j__aWU-TS8O9gxuhMIgpnKAtirV31gLhOfzU_ODqLR20jT0EWDLvbhTWjoyk1Nj4Fm-bYJ4T7Q9BQ3GH1Xp7g4BD7SzI8HWqBcDmcq9VkcYaxSB9xBsvDV0op7TM2jFi-V4izt_lnsN4FHGGqkxfEy4N3N8ZMWjpq3dPE-UXM9HPpiJzfgPsrBZbL4REzIzUhh9yypoRIrujaXF-D6lTcybRvBdT47wOUEUVlgVMeX1sSyeI"/>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<h3 class="text-lg font-bold mb-1 flex items-baseline justify-between w-full"><span>Habitación 10</span><span class="text-sm font-medium text-slate-500 dark:text-slate-400">- triple</span></h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-4 line-clamp-2">Suite ejecutiva con área de trabajo y vistas a la bahía de la ciudad.</p>
+<div class="mt-auto">
+<button class="w-full bg-primary/10 text-primary hover:bg-primary hover:text-white py-2 rounded-lg text-sm font-bold transition-all flex items-center justify-center gap-2" onclick="document.getElementById('room-modal').classList.remove('hidden')">Ver detalles</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700">
+<div class="relative overflow-hidden aspect-[4/3] cursor-pointer" onclick="document.getElementById('room-modal').classList.remove('hidden')">
+<img class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500" data-alt="Elegant room with large bed" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzzk49Nsc0T4OJ3lwOFGuLuBY8IHDVCldTiX4npWRnokOJB-fvK2LG-qybqy-I5ejWWQpNMo269IK55_b87QOYa0BXZzG_IDK02dyuRByxKnKm_tckFR7RcWL9BR0nl4SW2M25EceoJx6zouBz7X3rTgff1wxz1HeBh5ua1Hpt5RyjwGxW9U8VOSWqpK922PerpgvflEj2UiWaUrrN04gRI_QqZlwookVMicDNoTWrNMKXBEKz5rts0l2N1jPlL_BPapQy6lW52dc"/>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<h3 class="text-lg font-bold mb-1 flex items-baseline justify-between w-full"><span>Habitación 11</span><span class="text-sm font-medium text-slate-500 dark:text-slate-400">- triple</span></h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-4 line-clamp-2">Lujo contemporáneo en tonos arena y azul profundo.</p>
+<div class="mt-auto">
+<button class="w-full bg-primary/10 text-primary hover:bg-primary hover:text-white py-2 rounded-lg text-sm font-bold transition-all flex items-center justify-center gap-2" onclick="document.getElementById('room-modal').classList.remove('hidden')">Ver detalles</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700">
+<div class="relative overflow-hidden aspect-[4/3] cursor-pointer" onclick="document.getElementById('room-modal').classList.remove('hidden')">
+<img class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500" data-alt="Bright airy hotel room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcm6GWC4WYcZFGTghoG8SgRSWaMJhs3-C5-QETGqhkl-km0fwV3FyndVQ9j56bssY3u-6M_AZJtmJmtIId7hATN8ZXyexK2b1XRNgIOdO4ikcrw5VPdCKrXh9366xH7-lo6bwwfqDWDiIjMVPDcqAPdBnVdKGCYtroOTJAq9paOkg7-zP5j9atOpWi9HS7Sz4SyPvzsMMboa00PbJ8P0rZTFJMoG9fUQ3lD9yWqHi4sATQ2JJ50GQ_jy6GU-Fn3rMe84fx_f1lniI"/>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<h3 class="text-lg font-bold mb-1 flex items-baseline justify-between w-full"><span>Habitación 12</span><span class="text-sm font-medium text-slate-500 dark:text-slate-400">- triple</span></h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-4 line-clamp-2">Esquina privilegiada con ventilación cruzada y brisa marina constante.</p>
+<div class="mt-auto">
+<button class="w-full bg-primary/10 text-primary hover:bg-primary hover:text-white py-2 rounded-lg text-sm font-bold transition-all flex items-center justify-center gap-2" onclick="document.getElementById('room-modal').classList.remove('hidden')">Ver detalles</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700">
+<div class="relative overflow-hidden aspect-[4/3] cursor-pointer" onclick="document.getElementById('room-modal').classList.remove('hidden')">
+<img class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500" data-alt="Large suite with sitting area" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkmWxmW-UKr-YLIZ64Y3Nz-Elytez58ob-ZMmwmlBqE15T78B__yB-x6aWDAshg6v9kBwI7r-miwelkhNL0exnc8vfnYTxldmTYMFr0jYT05WHcW73_CMiRHdfq9LyYZM9g_b5oKEHTVGAjGmvvis32XowPo2vCRnGmcdAUuaYWUcRz77GZ0MqShYLVqOyGfeQtXBv2qbZLDGIK8qJE6bdH0m_NJiVnaKcmW0vw39FtFgwkSFbk6Zu8PwiYiia3-AIzQYEM916-fw"/>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<h3 class="text-lg font-bold mb-1 flex items-baseline justify-between w-full"><span>Habitación 13</span><span class="text-sm font-medium text-slate-500 dark:text-slate-400">- triple</span></h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-4 line-clamp-2">Suite con sala de estar integrada y kitchenette de concepto abierto.</p>
+<div class="mt-auto">
+<button class="w-full bg-primary/10 text-primary hover:bg-primary hover:text-white py-2 rounded-lg text-sm font-bold transition-all flex items-center justify-center gap-2" onclick="document.getElementById('room-modal').classList.remove('hidden')">Ver detalles</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700">
+<div class="relative overflow-hidden aspect-[4/3] cursor-pointer" onclick="document.getElementById('room-modal').classList.remove('hidden')">
+<img class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500" data-alt="Modern apartment style room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpCTkstmEwLXNgItjPJ-qMmHNFPnM6NYkBRkH0fkrljj2vQTXsZI0O3iuW2rtypL2PG05om7_hbGY3mSinsC4-QCJZ6FkOMsJRM45sBf8OmNVbhHcYalC2D4BAIiKad845yd-w0hzA0G0u5o0RFQXZJoJxDhCkrYE9BtuY2TShovjBt1d0yT_JkE7iCjbwq_DH6rMlCh_jC8ZmnbJHIeFxV4yGvITjHlW1q_Cu1poMkr91yWdE4aWhE8Gs1vioDorzSWn7nKw4r1E"/>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<h3 class="text-lg font-bold mb-1 flex items-baseline justify-between w-full"><span>Habitación 14</span><span class="text-sm font-medium text-slate-500 dark:text-slate-400">- triple</span></h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-4 line-clamp-2">Penthouse exclusivo con acceso a lounge privado y servicio de mayordomo.</p>
+<div class="mt-auto">
+<button class="w-full bg-primary/10 text-primary hover:bg-primary hover:text-white py-2 rounded-lg text-sm font-bold transition-all flex items-center justify-center gap-2" onclick="document.getElementById('room-modal').classList.remove('hidden')">Ver detalles</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-background-dark border-t border-primary/10 mt-20 py-12 px-6 md:px-20">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">tsunami</span>
+<h2 class="text-xl font-bold">Coastal Hotel</h2>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                        Experiencias inolvidables frente al mar Caribe. Lujo, confort y naturaleza en un solo lugar.
+                    </p>
+</div>
+<div>
+<h4 class="font-bold mb-6">Enlaces</h4>
+<ul class="space-y-4 text-sm text-slate-600 dark:text-slate-400">
+<li><a class="hover:text-primary transition-colors" href="#">Sobre Nosotros</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Habitaciones</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Sostenibilidad</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Blog</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-6">Soporte</h4>
+<ul class="space-y-4 text-sm text-slate-600 dark:text-slate-400">
+<li><a class="hover:text-primary transition-colors" href="#">Preguntas Frecuentes</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Política de Cancelación</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Privacidad</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Términos de Uso</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-6">Contacto</h4>
+<div class="space-y-4 text-sm text-slate-600 dark:text-slate-400">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-lg">location_on</span>
+<span>Playa Paraíso, KM 12, Caribe</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-lg">mail</span>
+<span>reservas@coastalhotel.com</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-lg">phone</span>
+<span>+1 800 555 COAST</span>
+</div>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto border-t border-slate-100 dark:border-slate-800 mt-12 pt-8 text-center text-xs text-slate-400">
+                © 2024 Coastal Hotel. Todos los derechos reservados.
+            </div>
+</footer>
+<!-- WhatsApp Floating Button -->
+<a class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform flex items-center justify-center" href="#">
+<svg class="w-6 h-6 fill-current" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path>
+</svg>
+</a>
+<!-- Room Detail Modal (Hidden by default) -->
+<div class="hidden fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 md:p-10" id="room-modal">
+<div class="relative bg-white dark:bg-slate-900 w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl flex flex-col md:flex-row">
+<button class="absolute top-4 right-4 z-50 bg-white/20 hover:bg-white/40 backdrop-blur p-2 rounded-full transition-all text-white md:text-slate-900 md:bg-slate-100/50" onclick="closeRoomModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="w-full md:w-3/5 relative bg-slate-200 aspect-video md:aspect-auto">
+<div class="relative w-full h-full group">
+<div class="overflow-hidden w-full h-full">
+<div id="modal-img-container"></div>
+</div>
+<div class="absolute inset-0 flex items-center justify-between px-4 pointer-events-none">
+<button class="bg-black/30 hover:bg-black/50 text-white p-2 rounded-full backdrop-blur-sm pointer-events-auto" onclick="changeSlide(-1)">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="bg-black/30 hover:bg-black/50 text-white p-2 rounded-full backdrop-blur-sm pointer-events-auto" onclick="changeSlide(1)">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="w-full md:w-2/5 p-8 flex flex-col">
+<div class="mb-6">
+<span class="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-2 block">Premium Suite</span>
+<h2 class="text-3xl font-extrabold mb-2" id="modal-room-title">Habitación</h2>
+<div class="flex items-center gap-1 text-yellow-400">
+<span class="material-symbols-outlined fill-1 text-lg">star</span>
+<span class="material-symbols-outlined fill-1 text-lg">star</span>
+<span class="material-symbols-outlined fill-1 text-lg">star</span>
+<span class="material-symbols-outlined fill-1 text-lg">star</span>
+<span class="material-symbols-outlined fill-1 text-lg">star</span>
+</div>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8" id="modal-room-desc"></p>
+<div class="grid grid-cols-2 gap-y-4 gap-x-6 mb-10">
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-primary">wifi</span><span class="text-xs font-semibold">Wi-Fi</span></div>
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-primary">ac_unit</span><span class="text-xs font-semibold">A/C</span></div>
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-primary">tv</span><span class="text-xs font-semibold">Smart TV</span></div>
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-primary">king_bed</span><span class="text-xs font-semibold">King Bed</span></div>
+</div>
+<div class="mt-auto pt-6 border-t border-slate-100 dark:border-slate-800">
+<div class="flex justify-between items-center mb-6">
+<div><span class="text-2xl font-black text-primary">$250</span><span class="text-slate-400 text-sm font-medium">/ noche</span></div>
+</div>
+<button class="w-full bg-primary text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-primary/20 transition-all">Reservar ahora</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+    let currentRoomImages = [];
+    let currentSlideIndex = 0;
+
+    function openRoomModal(title, desc, images) {
+        document.getElementById('modal-room-title').innerText = title;
+        document.getElementById('modal-room-desc').innerText = desc;
+        currentRoomImages = JSON.parse(images);
+        currentSlideIndex = 0;
+        
+        const container = document.getElementById('modal-img-container');
+        container.innerHTML = '';
+        currentRoomImages.forEach(src => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.className = 'modal-slide-item';
+            container.appendChild(img);
+        });
+
+        updateModalImage();
+        document.getElementById('room-modal').classList.remove('hidden');
+    }
+
+    function closeRoomModal() {
+        document.getElementById('room-modal').classList.add('hidden');
+    }
+
+    function changeSlide(direction) {
+        if (currentRoomImages.length === 0) return;
+        currentSlideIndex = (currentSlideIndex + direction + currentRoomImages.length) % currentRoomImages.length;
+        updateModalImage();
+    }
+
+    function updateModalImage() {
+        const container = document.getElementById('modal-img-container');
+        if (container) {
+            container.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+        }
+    }
+
+    window.onclick = function(event) {
+        let modal = document.getElementById('room-modal');
+        if (event.target == modal) closeRoomModal();
+    }
+</script>
+</div>
+<!-- Script simple to handle modal closing when clicking outside -->
+</body></html>
