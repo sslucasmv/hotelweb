@@ -1,102 +1,147 @@
 ---
 import { Icon } from 'astro-icon/components';
+
+// Cargamos las imágenes en el servidor para que Astro sepa que existen
+const imagenesLocales = import.meta.glob<{ default: ImageMetadata }>('../assets/images/habitaciones/*.{jpeg,jpg,JPG,png,webp}');
 ---
 
+<div id="room-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 md:p-10 transition-opacity duration-300">
+  <div class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm" id="modal-close-overlay"></div>
 
-<div id="room-modal" class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-sm items-center justify-center p-4">
-<div class="bg-white rounded-3xl max-w-5xl w-full overflow-hidden relative shadow-2xl flex flex-col md:flex-row h-[90vh] md:h-[550px]">
+  <div class="bg-white w-full max-w-7xl h-full max-h-[90vh] md:max-h-[85vh] rounded-2xl overflow-hidden shadow-2xl flex flex-col relative z-10">
     
-    <button id="close-modal" class="absolute top-4 right-4 z-[110] bg-white/20 hover:bg-white p-2 rounded-full transition-all text-slate-800 shadow-lg border border-white/40">
-     <Icon name="material-symbols:close" />
+    <button id="close-modal" class="absolute top-4 right-4 z-50 bg-white/40 hover:bg-white/60 text-slate-800 p-2 rounded-full backdrop-blur-sm transition-all shadow-md">
+      <Icon name="material-symbols:close" class="w-6 h-6" />
     </button>
 
-    <div class="w-full md:w-2/3 bg-slate-100 relative overflow-hidden group">
-      <div id="modal-img-container" class="flex h-full transition-transform duration-500 ease-in-out">
-        </div>
-      
-      <button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-3 rounded-full transition-all shadow-md active:scale-90"> 
-        <Icon name="material-symbols:chevron-left" />
-      </button>
-      <button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-3 rounded-full transition-all shadow-md active:scale-90"> 
-           <Icon name="material-symbols:chevron-right" />
-      </button>
-    </div>
+    <div class="flex flex-col md:flex-row flex-grow min-h-0">
+      <div class="w-full md:w-2/3 lg:w-[70%] bg-slate-100 relative group flex-shrink-0 min-h-[300px] md:min-h-full">
+        <div id="main-image-container" class="w-full h-full flex items-center justify-center overflow-hidden bg-slate-200">
+           </div>
+        
+        <button id="prev-photo" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full hidden transition-all">
+          <Icon name="material-symbols:chevron-left" class="w-7 h-7" />
+        </button>
+        <button id="next-photo" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full hidden transition-all">
+          <Icon name="material-symbols:chevron-right" class="w-7 h-7" />
+        </button>
+      </div>
 
-    <div class="w-full md:w-1/3 p-10 flex flex-col bg-white">
-      <h2 id="modal-title" class="text-3xl font-black text-slate-800 mb-4 leading-tight"></h2>
-      <p id="modal-description" class="text-slate-500 text-sm leading-relaxed mb-8"></p>
-      
-      <div class="mt-auto">
-        <a id="whatsapp-link" href="#" target="_blank" class="block w-full bg-blue-ocean text-white text-center py-4 rounded-2xl font-bold shadow-xl shadow-blue-ocean/20 hover:brightness-110 transition-all hover:-translate-y-1 active:scale-95">
-          Reservar Ahora
-        </a>
+      <div class="w-full md:w-1/3 lg:w-[30%] p-8 flex flex-col min-h-0 bg-white">
+        <div class="overflow-y-auto flex-grow pr-2 mb-6 scrollbar-thin">
+          <h2 id="modal-title" class="text-3xl font-bold text-slate-800 mb-5 tracking-tight"></h2>
+          <div id="modal-desc" class="text-slate-600 leading-relaxed"></div>
+        </div>
+        
+        <div class="mt-auto pt-4 border-t border-slate-100 flex-shrink-0">
+           <a href="https://wa.me/tu-numero" target="_blank" class="w-full bg-blue-ocean text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-blue-700 transition-colors shadow-lg">
+              Consultar disponibilidad
+              <Icon name="material-symbols:calendar-month" class="w-5 h-5" />
+           </a>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-  function initModal() {
-    let fotos = [];
-    let index = 0;
-    const modal = document.getElementById('room-modal');
-    const container = document.getElementById('modal-img-container');
+  // 1. Importamos las imágenes con EAGER para tener las URLs optimizadas en el navegador
+  const images = import.meta.glob('/src/assets/images/habitaciones/*.{jpeg,jpg,JPG,png,webp}', { eager: true });
+  
+  // 2. Referencias al DOM
+  const modal = document.getElementById('room-modal');
+  const overlay = document.getElementById('modal-close-overlay');
+  const closeBtn = document.getElementById('close-modal');
+  const mainImageContainer = document.getElementById('main-image-container');
+  const titleEl = document.getElementById('modal-title');
+  const descEl = document.getElementById('modal-desc');
+  const prevBtn = document.getElementById('prev-photo');
+  const nextBtn = document.getElementById('next-photo');
 
-    if (!modal || !container) return;
+  let currentPhotos = [];
+  let currentIndex = 0;
 
-    function updateSlider() {
-      container.style.transform = `translateX(-${index * 100}%)`;
-    }
-
-function openModal(e) {
-      const btn = e.currentTarget;
-      fotos = JSON.parse(btn.dataset.fotos || '[]');
-      index = 0;
-
-      document.getElementById('modal-title').innerText = btn.dataset.titulo || '';
-      document.getElementById('modal-description').innerText = btn.dataset.desc || '';
-      
-      // INYECCIÓN CORREGIDA:
-      // Envolvemos cada imagen en un div que fuerza el alto al 100% del contenedor
-      // y usamos object-cover para que la foto vertical se recorte sola.
-      container.innerHTML = fotos.map(f => 
-        `<div class="min-w-full h-full overflow-hidden">
-          <img src="${f}" class="w-full h-full object-cover pointer-events-none">
-        </div>`
-      ).join('');
-
-      // WhatsApp Link Dinámico
-      const waLink = document.getElementById('whatsapp-link');
-      const msg = encodeURIComponent(`¡Hola! Quisiera consultar disponibilidad para la ${btn.dataset.titulo}.`);
-      waLink.href = `https://wa.me/5491112345678?text=${msg}`; 
-
-      modal.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-      updateSlider();
-    }
-
-    function closeModal() {
-      modal.style.display = 'none';
-      document.body.style.overflow = '';
-    }
-
-    // Bindings
-    document.querySelectorAll('.btn-open-modal').forEach(b => b.addEventListener('click', openModal));
-    document.getElementById('close-modal')?.addEventListener('click', closeModal);
-    document.getElementById('next-btn')?.addEventListener('click', () => { index = (index + 1) % fotos.length; updateSlider(); });
-    document.getElementById('prev-btn')?.addEventListener('click', () => { index = (index - 1 + fotos.length) % fotos.length; updateSlider(); });
+  function updateImage() {
+    if (!mainImageContainer || currentPhotos.length === 0) return;
     
-    // Cerrar al clickear afuera
-    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    const photoName = currentPhotos[currentIndex];
+    const fullPath = `/src/assets/images/habitaciones/${photoName}`;
+    const optimizedImg = images[fullPath];
 
-    // Esc Key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
-    });
+    if (optimizedImg) {
+      // @ts-ignore
+      const src = optimizedImg.default.src;
+      mainImageContainer.innerHTML = `<img src="${src}" class="w-full h-full object-cover fade-in" alt="Habitación" />`;
+    }
+
+    // Mostrar u ocultar flechas
+    if (currentPhotos.length > 1) {
+      prevBtn?.classList.remove('hidden');
+      nextBtn?.classList.remove('hidden');
+    } else {
+      prevBtn?.classList.add('hidden');
+      nextBtn?.classList.add('hidden');
+    }
   }
 
-  // Ejecutar para Astro
-  initModal();
-  document.addEventListener('astro:after-swap', initModal);
-  document.addEventListener('astro:page-load', initModal);
+  function openModal(data) {
+    if (!modal) return;
+    currentPhotos = data.fotos || [];
+    currentIndex = 0;
+
+    if (titleEl) titleEl.innerText = data.titulo;
+    if (descEl) descEl.innerText = data.desc;
+
+    updateImage();
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.add('hidden');
+    document.body.style.overflow = 'auto';
+  }
+
+  // Event Delegation para abrir el modal
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    const btn = target.closest('.btn-open-modal');
+    
+    if (btn) {
+      const data = {
+        titulo: btn.getAttribute('data-titulo'),
+        desc: btn.getAttribute('data-desc'),
+        fotos: JSON.parse(btn.getAttribute('data-fotos') || '[]')
+      };
+      openModal(data);
+    }
+  });
+
+  // Navegación
+  nextBtn?.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % currentPhotos.length;
+    updateImage();
+  });
+
+  prevBtn?.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + currentPhotos.length) % currentPhotos.length;
+    updateImage();
+  });
+
+  // Cerrar modal
+  [closeBtn, overlay].forEach(el => el?.addEventListener('click', closeModal));
+  
+  // Cerrar con tecla ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
 </script>
+
+<style>
+  .fade-in { animation: fadeIn 0.3s ease-in-out; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .scrollbar-thin::-webkit-scrollbar { width: 6px; }
+  .scrollbar-thin::-webkit-scrollbar-track { background: #f1f5f9; }
+  .scrollbar-thin::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+</style>

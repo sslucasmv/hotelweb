@@ -95,7 +95,8 @@
     "titulo": "Habitación 15",
     "tipo": "Doble",
     "categoria": "Estándar",
-    "desc": "Habitacion doble,luminosa con vista al mar"
+    "desc": "Habitacion doble,luminosa con vista al mar",
+    "fotos": ["h2-1.jpg"]
   }  ,
    {
     "id": "h16-",
