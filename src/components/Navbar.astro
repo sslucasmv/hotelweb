@@ -1,5 +1,4 @@
 ---
-// src/components/Navbar.astro
 // Limpiamos la ruta actual quitando la barra final si existe para comparar mejor
 const pathname = new URL(Astro.request.url).pathname.replace(/\/$/, "") || "/";
 
@@ -8,10 +7,12 @@ const isActive = (path: string) => {
     if (path === "/") return pathname === "/";
     return pathname.startsWith(path);
 };
+
 import { Icon } from 'astro-icon/components';
 ---
+
 <header 
-  class="sticky top-0 z-50 bg-white backdrop-blur-md px-6 py-2 transition-all duration-500 border-b border-transparent" 
+  class="sticky top-0 z-50 bg-white backdrop-blur-md px-6 py-2 transition-all duration-500 border-b border-slate-300/60" 
   id="main-header"
 >
     <div class="max-w-7xl mx-auto flex items-center justify-between">
@@ -31,21 +32,18 @@ import { Icon } from 'astro-icon/components';
 
         <div class="flex items-center gap-4 flex-shrink-0">
             <button class="btn-ocean hidden sm:flex">
-               <span class="onda"></span>
-               <span class="onda"></span>
-               <span class="relative z-10">Contáctenos</span>
+                <span class="onda"></span>
+                <span class="onda"></span>
+                <span class="relative z-10">Contáctenos</span>
             </button>
 
-            
-<button 
-  class="menu-hamburguesa flex items-center justify-center text-gray-800 p-2 cursor-pointer" 
-  id="mobile-menu-open"
-  aria-label="Abrir menú de navegación"
->
-  <Icon name="material-symbols:menu" class="w-8 h-8" />
-</button>
-
-
+            <button 
+                class="menu-hamburguesa flex items-center justify-center text-gray-800 p-2 cursor-pointer md:hidden" 
+                id="mobile-menu-open"
+                aria-label="Abrir menú de navegación"
+            >
+                <Icon name="material-symbols:menu" class="w-8 h-8" />
+            </button>
         </div>
     </div>
 </header>
@@ -54,12 +52,12 @@ import { Icon } from 'astro-icon/components';
     <div class="flex justify-between items-center">
         <img src="/images/logohotel.png" alt="Logo" class="h-12 w-auto" />
         <button 
-  class="flex items-center justify-center p-2 cursor-pointer transition-colors hover:bg-gray-100 rounded-full" 
-  id="mobile-menu-close"
-  aria-label="Cerrar menú de navegación"
->
-  <Icon name="material-symbols:close" class="text-3xl w-8 h-8 text-gray-800" />
-</button>
+            class="flex items-center justify-center p-2 cursor-pointer transition-colors hover:bg-gray-100 rounded-full" 
+            id="mobile-menu-close"
+            aria-label="Cerrar menú de navegación"
+        >
+            <Icon name="material-symbols:close" class="text-3xl w-8 h-8 text-gray-800" />
+        </button>
     </div>
     
     <nav class="flex flex-col gap-4 mt-8">
@@ -79,8 +77,6 @@ import { Icon } from 'astro-icon/components';
 <style>
     /* Estilos del Link Activo */
     .nav-link { display: inline-block; transition: all 0.3s ease; }
-    
-    /* Nota: Usamos HEX directo o clases de Tailwind si las variables de CSS fallan */
     .nav-link:hover { color: #0077b6; }
     
     .link-active { color: #0077b6 !important; }
@@ -95,10 +91,6 @@ import { Icon } from 'astro-icon/components';
         background: #0077b6;
         border-radius: 2px;
     }
-
-    @media (min-width: 768px) {
-        .menu-hamburguesa { display: none !important; }
-    }
 </style>
 
 <script>
@@ -108,26 +100,39 @@ import { Icon } from 'astro-icon/components';
         const openBtn = document.getElementById('mobile-menu-open');
         const closeBtn = document.getElementById('mobile-menu-close');
 
-        // Scroll Logic
+        // Lógica de Scroll: Borde inicial -> Sombra y sin borde al bajar
         window.addEventListener('scroll', () => {
             if (window.scrollY > 10) {
-                header?.classList.add('shadow-xl', 'shadow-blue-900/5', 'border-blue-200/20');
-                header?.classList.replace('py-2', 'py-1');
+                // Estado al bajar el scroll
+                header?.classList.remove('border-slate-300/60');
+                header?.classList.add('shadow-lg', 'shadow-blue-900/5', 'border-transparent');
+                header?.classList.replace('py-2', 'py-1.5');
             } else {
-                header?.classList.remove('shadow-xl', 'shadow-blue-900/5', 'border-blue-200/20');
-                header?.classList.replace('py-1', 'py-2');
+                // Estado inicial (arriba de todo)
+                header?.classList.add('border-slate-300/60');
+                header?.classList.remove('shadow-lg', 'shadow-blue-900/5', 'border-transparent');
+                header?.classList.replace('py-1.5', 'py-2');
             }
         });
 
         // Mobile Menu Logic
-        openBtn?.addEventListener('click', () => mobileMenu?.classList.remove('translate-x-full'));
-        closeBtn?.addEventListener('click', () => mobileMenu?.classList.add('translate-x-full'));
+        openBtn?.addEventListener('click', () => {
+            mobileMenu?.classList.remove('translate-x-full');
+            document.body.style.overflow = 'hidden'; // Evita scroll con menú abierto
+        });
+
+        const closeMenu = () => {
+            mobileMenu?.classList.add('translate-x-full');
+            document.body.style.overflow = '';
+        };
+
+        closeBtn?.addEventListener('click', closeMenu);
         
         mobileMenu?.querySelectorAll('a, button').forEach(el => {
-            el.addEventListener('click', () => mobileMenu?.classList.add('translate-x-full'));
+            el.addEventListener('click', closeMenu);
         });
     }
 
-    // Se ejecuta al cargar y al navegar (para Astro View Transitions)
+    // Se ejecuta al cargar y al navegar (compatible con Astro View Transitions)
     document.addEventListener('astro:page-load', setupMenu);
 </script>
