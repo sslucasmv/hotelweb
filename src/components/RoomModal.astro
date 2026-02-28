@@ -43,130 +43,103 @@ const imagenesLocales = import.meta.glob<{ default: ImageMetadata }>('../assets/
     </div>
   </div>
 </div>
-
 <script>
-  // 1. Importamos las imágenes (Astro procesará las rutas optimizadas)
-  const images = import.meta.glob('/src/assets/images/habitaciones/*.{jpeg,jpg,JPG,png,webp}', { eager: true });
-  
-  const modal = document.getElementById('room-modal');
-  const overlay = document.getElementById('modal-close-overlay');
-  const closeBtn = document.getElementById('close-modal');
-  const mainImageContainer = document.getElementById('main-image-container');
-  const titleEl = document.getElementById('modal-title');
-  const descEl = document.getElementById('modal-desc');
-  const prevBtn = document.getElementById('prev-photo');
-  const nextBtn = document.getElementById('next-photo');
-
-  let currentPhotos = [];
-  let currentIndex = 0;
-
-  function updateImage() {
-    if (!mainImageContainer || currentPhotos.length === 0) return;
+  // Esta función contendrá toda la lógica para que se reinicie en cada navegación
+  function setupModal() {
+    const images = import.meta.glob('/src/assets/images/habitaciones/*.{jpeg,jpg,JPG,png,webp}', { eager: true });
     
-    const photoName = currentPhotos[currentIndex];
-    const fullPath = `/src/assets/images/habitaciones/${photoName}`;
-    const optimizedImg = images[fullPath];
+    const modal = document.getElementById('room-modal');
+    const overlay = document.getElementById('modal-close-overlay');
+    const closeBtn = document.getElementById('close-modal');
+    const mainImageContainer = document.getElementById('main-image-container');
+    const titleEl = document.getElementById('modal-title');
+    const descEl = document.getElementById('modal-desc');
+    const prevBtn = document.getElementById('prev-photo');
+    const nextBtn = document.getElementById('next-photo');
 
-    if (optimizedImg) {
-      // @ts-ignore
-      const src = optimizedImg.default.src;
-      // Usamos absolute inset-0 para que la imagen vertical se recorte y no estire el modal
-      mainImageContainer.innerHTML = `
-        <img 
-          src="${src}" 
-          class="absolute inset-0 w-full h-full object-cover fade-in" 
-          alt="Habitación" 
-          loading="lazy"
-        />`;
+    let currentPhotos = [];
+    let currentIndex = 0;
+
+    function updateImage() {
+      if (!mainImageContainer || currentPhotos.length === 0) return;
+      const photoName = currentPhotos[currentIndex];
+      const fullPath = `/src/assets/images/habitaciones/${photoName}`;
+      const optimizedImg = images[fullPath];
+
+      if (optimizedImg) {
+        // @ts-ignore
+        const src = optimizedImg.default.src;
+        mainImageContainer.innerHTML = `
+          <img 
+            src="${src}" 
+            class="absolute inset-0 w-full h-full object-cover fade-in" 
+            alt="Habitación" 
+            loading="lazy"
+          />`;
+      }
+
+      if (currentPhotos.length > 1) {
+        prevBtn?.classList.remove('hidden');
+        nextBtn?.classList.remove('hidden');
+      } else {
+        prevBtn?.classList.add('hidden');
+        nextBtn?.classList.add('hidden');
+      }
     }
 
-    // Lógica de flechas
-    if (currentPhotos.length > 1) {
-      prevBtn?.classList.remove('hidden');
-      nextBtn?.classList.remove('hidden');
-    } else {
-      prevBtn?.classList.add('hidden');
-      nextBtn?.classList.add('hidden');
+    function openModal(data) {
+      if (!modal) return;
+      currentPhotos = data.fotos || [];
+      currentIndex = 0;
+      if (titleEl) titleEl.innerText = data.titulo;
+      if (descEl) descEl.innerText = data.desc;
+      updateImage();
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
     }
-  }
 
-  function openModal(data) {
-    if (!modal) return;
-    currentPhotos = data.fotos || [];
-    currentIndex = 0;
+    function closeModal() {
+      if (!modal) return;
+      modal.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
 
-    if (titleEl) titleEl.innerText = data.titulo;
-    if (descEl) descEl.innerText = data.desc;
+    // Delegación de eventos (limpia eventos previos si Astro re-renderiza)
+    const handleOpenClick = (e) => {
+      const target = e.target;
+      const btn = target.closest('.btn-open-modal');
+      if (btn) {
+        const data = {
+          titulo: btn.getAttribute('data-titulo'),
+          desc: btn.getAttribute('data-desc'),
+          fotos: JSON.parse(btn.getAttribute('data-fotos') || '[]')
+        };
+        openModal(data);
+      }
+    };
 
-    updateImage();
-    modal.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-  }
+    document.addEventListener('click', handleOpenClick);
 
-  function closeModal() {
-    if (!modal) return;
-    modal.classList.add('hidden');
-    document.body.style.overflow = 'auto';
-  }
+    nextBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentIndex = (currentIndex + 1) % currentPhotos.length;
+      updateImage();
+    });
 
-  // Delegación de eventos para abrir el modal desde las cards
-  document.addEventListener('click', (e) => {
-    const target = e.target as HTMLElement;
-    const btn = target.closest('.btn-open-modal');
+    prevBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentIndex = (currentIndex - 1 + currentPhotos.length) % currentPhotos.length;
+      updateImage();
+    });
+
+    [closeBtn, overlay].forEach(el => el?.addEventListener('click', closeModal));
     
-    if (btn) {
-      const data = {
-        titulo: btn.getAttribute('data-titulo'),
-        desc: btn.getAttribute('data-desc'),
-        fotos: JSON.parse(btn.getAttribute('data-fotos') || '[]')
-      };
-      openModal(data);
-    }
-  });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+  }
 
-  // Navegación de fotos
-  nextBtn?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    currentIndex = (currentIndex + 1) % currentPhotos.length;
-    updateImage();
-  });
-
-  prevBtn?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    currentIndex = (currentIndex - 1 + currentPhotos.length) % currentPhotos.length;
-    updateImage();
-  });
-
-  // Cerrar modal
-  [closeBtn, overlay].forEach(el => el?.addEventListener('click', closeModal));
-  
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
-  });
+  // AQUÍ ESTÁ LA MAGIA: 
+  // Ejecuta la función la primera vez y cada vez que navegues entre páginas
+  document.addEventListener('astro:page-load', setupModal);
 </script>
-
-<style>
-  /* Animación de entrada de imagen */
-  .fade-in { 
-    animation: fadeIn 0.3s ease-in-out; 
-  }
-  @keyframes fadeIn { 
-    from { opacity: 0; } 
-    to { opacity: 1; } 
-  }
-
-  /* Scrollbar estético para el panel de información */
-  .scrollbar-thin::-webkit-scrollbar { 
-    width: 6px; 
-  }
-  .scrollbar-thin::-webkit-scrollbar-track { 
-    background: #f8fafc; 
-  }
-  .scrollbar-thin::-webkit-scrollbar-thumb { 
-    background: #cbd5e1; 
-    border-radius: 10px; 
-  }
-  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-    background: #94a3b8;
-  }
-</style>
