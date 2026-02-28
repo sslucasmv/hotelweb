@@ -8,29 +8,29 @@ const imagenesLocales = import.meta.glob<{ default: ImageMetadata }>('../assets/
 <div id="room-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 md:p-10 transition-opacity duration-300">
   <div class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm" id="modal-close-overlay"></div>
 
-  <div class="bg-white w-full max-w-7xl h-full max-h-[90vh] md:max-h-[85vh] rounded-2xl overflow-hidden shadow-2xl flex flex-col relative z-10">
+  <div class="bg-white w-full max-w-7xl h-full max-h-[80vh] md:max-h-[75vh] lg:max-h-[85vh] rounded-2xl overflow-hidden shadow-2xl flex flex-col relative z-10">
     
     <button id="close-modal" class="absolute top-4 right-4 z-50 bg-white/40 hover:bg-white/60 text-slate-800 p-2 rounded-full backdrop-blur-sm transition-all shadow-md">
       <Icon name="material-symbols:close" class="w-6 h-6" />
     </button>
 
     <div class="flex flex-col md:flex-row flex-grow min-h-0">
-      <div class="w-full md:w-2/3 lg:w-[70%] bg-slate-100 relative group flex-shrink-0 min-h-[300px] md:min-h-full">
-        <div id="main-image-container" class="w-full h-full flex items-center justify-center overflow-hidden bg-slate-200">
+      <div class="w-full md:w-2/3 lg:w-[70%] bg-slate-100 relative group flex-shrink-0 min-h-[350px] md:min-h-full">
+        <div id="main-image-container" class="relative w-full h-full flex items-center justify-center overflow-hidden bg-slate-200">
            </div>
         
-        <button id="prev-photo" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full hidden transition-all">
+        <button id="prev-photo" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full hidden transition-all z-20">
           <Icon name="material-symbols:chevron-left" class="w-7 h-7" />
         </button>
-        <button id="next-photo" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full hidden transition-all">
+        <button id="next-photo" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full hidden transition-all z-20">
           <Icon name="material-symbols:chevron-right" class="w-7 h-7" />
         </button>
       </div>
 
       <div class="w-full md:w-1/3 lg:w-[30%] p-8 flex flex-col min-h-0 bg-white">
         <div class="overflow-y-auto flex-grow pr-2 mb-6 scrollbar-thin">
-          <h2 id="modal-title" class="text-3xl font-bold text-slate-800 mb-5 tracking-tight"></h2>
-          <div id="modal-desc" class="text-slate-600 leading-relaxed"></div>
+          <h2 id="modal-title" class="text-3xl font-bold text-slate-800 mb-5 tracking-tight leading-tight"></h2>
+          <div id="modal-desc" class="text-slate-600 leading-relaxed text-sm md:text-base"></div>
         </div>
         
         <div class="mt-auto pt-4 border-t border-slate-100 flex-shrink-0">
@@ -45,10 +45,9 @@ const imagenesLocales = import.meta.glob<{ default: ImageMetadata }>('../assets/
 </div>
 
 <script>
-  // 1. Importamos las imágenes con EAGER para tener las URLs optimizadas en el navegador
+  // 1. Importamos las imágenes (Astro procesará las rutas optimizadas)
   const images = import.meta.glob('/src/assets/images/habitaciones/*.{jpeg,jpg,JPG,png,webp}', { eager: true });
   
-  // 2. Referencias al DOM
   const modal = document.getElementById('room-modal');
   const overlay = document.getElementById('modal-close-overlay');
   const closeBtn = document.getElementById('close-modal');
@@ -71,10 +70,17 @@ const imagenesLocales = import.meta.glob<{ default: ImageMetadata }>('../assets/
     if (optimizedImg) {
       // @ts-ignore
       const src = optimizedImg.default.src;
-      mainImageContainer.innerHTML = `<img src="${src}" class="w-full h-full object-cover fade-in" alt="Habitación" />`;
+      // Usamos absolute inset-0 para que la imagen vertical se recorte y no estire el modal
+      mainImageContainer.innerHTML = `
+        <img 
+          src="${src}" 
+          class="absolute inset-0 w-full h-full object-cover fade-in" 
+          alt="Habitación" 
+          loading="lazy"
+        />`;
     }
 
-    // Mostrar u ocultar flechas
+    // Lógica de flechas
     if (currentPhotos.length > 1) {
       prevBtn?.classList.remove('hidden');
       nextBtn?.classList.remove('hidden');
@@ -103,7 +109,7 @@ const imagenesLocales = import.meta.glob<{ default: ImageMetadata }>('../assets/
     document.body.style.overflow = 'auto';
   }
 
-  // Event Delegation para abrir el modal
+  // Delegación de eventos para abrir el modal desde las cards
   document.addEventListener('click', (e) => {
     const target = e.target as HTMLElement;
     const btn = target.closest('.btn-open-modal');
@@ -118,13 +124,15 @@ const imagenesLocales = import.meta.glob<{ default: ImageMetadata }>('../assets/
     }
   });
 
-  // Navegación
-  nextBtn?.addEventListener('click', () => {
+  // Navegación de fotos
+  nextBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
     currentIndex = (currentIndex + 1) % currentPhotos.length;
     updateImage();
   });
 
-  prevBtn?.addEventListener('click', () => {
+  prevBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
     currentIndex = (currentIndex - 1 + currentPhotos.length) % currentPhotos.length;
     updateImage();
   });
@@ -132,16 +140,33 @@ const imagenesLocales = import.meta.glob<{ default: ImageMetadata }>('../assets/
   // Cerrar modal
   [closeBtn, overlay].forEach(el => el?.addEventListener('click', closeModal));
   
-  // Cerrar con tecla ESC
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeModal();
   });
 </script>
 
 <style>
-  .fade-in { animation: fadeIn 0.3s ease-in-out; }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  .scrollbar-thin::-webkit-scrollbar { width: 6px; }
-  .scrollbar-thin::-webkit-scrollbar-track { background: #f1f5f9; }
-  .scrollbar-thin::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+  /* Animación de entrada de imagen */
+  .fade-in { 
+    animation: fadeIn 0.3s ease-in-out; 
+  }
+  @keyframes fadeIn { 
+    from { opacity: 0; } 
+    to { opacity: 1; } 
+  }
+
+  /* Scrollbar estético para el panel de información */
+  .scrollbar-thin::-webkit-scrollbar { 
+    width: 6px; 
+  }
+  .scrollbar-thin::-webkit-scrollbar-track { 
+    background: #f8fafc; 
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb { 
+    background: #cbd5e1; 
+    border-radius: 10px; 
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
 </style>

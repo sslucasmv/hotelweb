@@ -4,77 +4,61 @@ import { Image } from 'astro:assets';
 
 const { titulo, desc, fotos, categoria, tipo } = Astro.props;
 
-// 1. Buscamos los archivos reales en los assets (Usamos ../ para subir de carpeta)
 const imagenesLocales = import.meta.glob<{ default: ImageMetadata }>('../assets/images/habitaciones/*.{jpeg,jpg,JPG,png,webp}');
-
-// 2. Tomamos el primer nombre del array de fotos
 const nombreArchivo = (fotos && fotos.length > 0) ? fotos[0] : null;
-
-// 3. Construimos la ruta exacta para el buscador de Astro
 const rutaEnAssets = nombreArchivo ? `../assets/images/habitaciones/${nombreArchivo}` : null;
-
-// Verificamos si la imagen existe en la carpeta
 const imagenExiste = rutaEnAssets && imagenesLocales[rutaEnAssets];
 const esPremium = categoria === "Superior";
 ---
 
-<div class="group flex flex-col bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 relative">
+<div 
+  class="group flex flex-col bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 relative max-w-sm mx-auto cursor-pointer btn-open-modal"
+  data-titulo={titulo} 
+  data-desc={desc} 
+  data-fotos={JSON.stringify(fotos || [])}
+>
   
   {esPremium && (
-    <div class="absolute top-2 left-2 mt-1 ml-1 z-20 bg-yellow-400 text-white p-1.5 rounded-lg shadow-lg flex items-center justify-center border border-amber-300">
-      <Icon name="material-symbols:crown" class="text-white w-5 h-5" />
+    <div class="absolute top-2 left-2 z-20 bg-yellow-400 text-white p-1 rounded-lg shadow-lg flex items-center justify-center border border-amber-300 scale-90">
+      <Icon name="material-symbols:crown" class="w-4 h-4" />
     </div>
   )}
 
-  <div 
-    class="relative overflow-hidden aspect-[4/3] cursor-pointer btn-open-modal" 
-    data-titulo={titulo} 
-    data-desc={desc} 
-    data-fotos={JSON.stringify(fotos || [])}
-  >
+  <div class="relative overflow-hidden aspect-video">
     {imagenExiste ? (
       <Image 
         src={imagenesLocales[rutaEnAssets]()} 
         alt={`Habitación ${titulo}`}
         width={600} 
-        height={450}
+        height={338} 
         format="webp"
         quality="mid"
-        class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700"
+        class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700"
       />
     ) : (
       <div class="w-full h-full bg-slate-200 flex flex-col items-center justify-center text-slate-400 p-4 text-center">
-        <Icon name="material-symbols:image-not-supported-outline" class="w-10 h-10 mb-2" />
-        <span class="text-xs font-medium">Foto no disponible</span>
+        <Icon name="material-symbols:image-not-supported-outline" class="w-8 h-8 mb-1" />
+        <span class="text-[10px] font-medium">Sin foto</span>
       </div>
     )}
     
-    <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold text-blue-ocean uppercase tracking-widest shadow-sm z-10">
+    <div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2 py-0.5 rounded-full text-[12px] font-bold text-blue-ocean uppercase shadow-sm z-10">
       {categoria}
     </div>
   </div>
 
-  <div class="p-6 flex flex-col flex-1">
-    <div class="mb-4 text-left">
-      <h3 class="text-xl font-bold text-slate-800 flex justify-between items-center">
+  <div class="p-4 flex flex-col flex-1">
+    <div class="mb-3 text-left">
+      <h3 class="text-lg font-bold border-b border-slate-200 text-blue-ocean pb-2 flex justify-between items-center leading-tight">
         {titulo}
-        <span class="text-xs font-medium text-slate-400 bg-slate-50 px-2 py-1 rounded-md">-{tipo}</span>
+        <div class="inline-flex items-center gap-1 text-[12px] font-medium text-mauve-600 bg-slate-50 px-2 py-0.5 rounded border border-slate-300">
+          <Icon name="material-symbols:bed-outline" class="w-4 h-4" />
+          <span>{tipo}</span>
+        </div>
       </h3>
-      <p class="text-slate-600 text-sm mt-2 line-clamp-2 leading-relaxed">
+      <p class="text-slate-500 text-sm mt-1.5 line-clamp-2 leading-relaxed italic">
         {desc}
       </p>
-    </div>
-
-    <div class="mt-auto pt-4 border-t border-slate-50">
-      <button 
-        class="group cursor-pointer w-full bg-blue-50 text-blue-ocean hover:bg-blue-ocean hover:text-white py-3 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2 btn-open-modal"
-        data-titulo={titulo} 
-        data-desc={desc} 
-        data-fotos={JSON.stringify(fotos || [])}
-      >
-        Ver detalles
-        <Icon name="material-symbols:visibility-outline" class="w-6 h-6 fill-current text-current transition-colors" />
-      </button>
     </div>
   </div>
 </div>
