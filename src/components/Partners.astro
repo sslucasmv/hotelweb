@@ -1,0 +1,67 @@
+---
+import { Image } from 'astro:assets';
+
+// 1. Cargamos todos los logos de la carpeta automáticamente
+// Importante: Guardá tus logos en: src/assets/images/logos/
+const logos = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/logos/*.{jpeg,jpg,png,webp,svg}', { eager: true });
+const listaLogos = Object.values(logos);
+---
+
+<section class="class="bg-[#f4f4f4] pt-20 pb-40 border-y border-slate-100 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 pb-20">
+    
+    <h2 class="text-center text-slate-400 text-[14px] font-bold uppercase tracking-[0.5em] mb-16 pb-0 ">
+      Empresas que confían en nosotros
+    </h2>
+    
+    <div class="relative">
+      <div class="absolute inset-y-0 left-0 w-60 "></div>
+      <div class="absolute inset-y-0 right-0 w-60 "></div>
+
+      <div class="overflow-hidden">
+        <div class="animate-scroll flex gap-28 items-center w-max">
+          {/* Triplicamos la lista para que el loop sea infinito y nunca veas un hueco blanco */}
+          {[...listaLogos, ...listaLogos, ...listaLogos].map((logo) => (
+            <div class="flex items-center justify-center w-60 md:w-40 h-15 grayscale opacity-80 ">
+              <Image 
+                src={logo.default} 
+                alt="Logo partner" 
+                height={90}
+                format="webp"
+                quality="mid"
+                class="max-h-full w-auto object-contain"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Animación constante y suave */
+  @keyframes scroll {
+    0% { 
+      transform: translateX(0); 
+    }
+    100% { 
+      transform: translateX(-33.333%); 
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll 50s linear infinite;
+    /* Esto ayuda a que el movimiento sea ultra fluido en pantallas de 120hz */
+    will-change: transform;
+  }
+
+  /* Ocultamos cualquier rastro de scrollbar */
+  .overflow-hidden {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .overflow-hidden::-webkit-scrollbar {
+    display: none;
+  }
+</style>

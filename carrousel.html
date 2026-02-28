@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries">
+    document.addEventListener('DOMContentLoaded', () => {
+        const viewport = document.getElementById('carousel-viewport');
+        const content = viewport.querySelector('.animate-scroll');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const scrollAmount = 300;
+
+        const handleManualScroll = (direction) => {
+            // Pause the animation
+            content.style.animationPlayState = 'paused';
+            
+            // Calculate new scroll position
+            const currentScroll = viewport.scrollLeft;
+            const newScroll = direction === 'next' 
+                ? currentScroll + scrollAmount 
+                : currentScroll - scrollAmount;
+
+            viewport.scrollTo({
+                left: newScroll,
+                behavior: 'smooth'
+            });
+
+            // Resume animation shortly after manual click to keep it functional
+            clearTimeout(viewport.resumeTimeout);
+            viewport.resumeTimeout = setTimeout(() => {
+                content.style.animationPlayState = 'running';
+            }, 500);
+        };
+
+        prevBtn.addEventListener('click', () => handleManualScroll('prev'));
+        nextBtn.addEventListener('click', () => handleManualScroll('next'));
+
+        // Ensure the viewport itself is scrollable for the JS scrollTo to work
+        viewport.style.overflowX = 'auto';
+        viewport.classList.add('no-scrollbar');
+    });
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3394c1",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#131b1f",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-scroll {
+            display: flex;
+            width: max-content;
+            animation: scroll 20s linear infinite;
+        }
+        .pause-on-hover:hover .animate-scroll {
+            animation-play-state: paused;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<!-- TopAppBar -->
+<header class="bg-background-light dark:bg-background-dark border-b border-primary/10">
+<div class="flex items-center p-4 pb-2 justify-between max-w-7xl mx-auto w-full">
+<div class="flex items-center gap-2">
+<div class="text-primary flex size-10 shrink-0 items-center justify-center" data-icon="Bed">
+<span class="material-symbols-outlined text-3xl">bed</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight">Hotel Soleares</h2>
+</div>
+<div class="flex items-center">
+<button class="text-primary hover:text-primary/80 text-base font-bold transition-colors">Contáctenos</button>
+</div>
+</div>
+<div class="max-w-7xl mx-auto w-full">
+<nav class="flex px-4 gap-8 overflow-x-auto no-scrollbar">
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-4 whitespace-nowrap" href="#">
+<span class="text-sm font-bold">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-4 whitespace-nowrap" href="#">
+<span class="text-sm font-bold">Habitaciones</span>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-4 whitespace-nowrap" href="#">
+<span class="text-sm font-bold">Servicios</span>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-primary text-primary pb-3 pt-4 whitespace-nowrap" href="#">
+<span class="text-sm font-bold">Alojamiento para empresas</span>
+</a>
+</nav>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<div class="@container max-w-7xl mx-auto">
+<div class="@[480px]:p-4">
+<div class="flex min-h-[520px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-start justify-end px-6 pb-12 @[480px]:px-12 relative overflow-hidden" data-alt="Modern bright corporate meeting room with glass walls" style='background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.7) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuD9EjrfMYbxDMve_iQGm-w6--H5L6xPPzLiPmeb10A1nWA6BCv4hAcPQ80ic95h8DK60CngV155M-ZGs-wq_AI-Pg_sFOS7_z0IzjtvUXs-UVlRJKwJ8qU5YQUVfBEOMDk20IKkqWd5u87PsPXmdh_gOcKr9Q0QsYbNOy0ixoDkWB31fAFaWmgMD7zktJXNPhjSVTdM23JYw27-V3IDs5vzCEpiCAOryN8qbdFw9sJDkvWoIr2GeU3qSy7mJd6crVK2zGaohWoc1xQ");'>
+<div class="flex flex-col gap-3 text-left max-w-2xl relative z-10">
+<h1 class="text-white text-4xl font-black leading-tight tracking-tight @[480px]:text-6xl">
+                            Alojamiento para empresas
+                        </h1>
+<p class="text-white/90 text-base font-normal leading-relaxed @[480px]:text-lg">
+                            Soluciones exclusivas de hospedaje corporativo con el confort y la tranquilidad que su equipo necesita para maximizar la productividad.
+                        </p>
+</div>
+<button class="relative z-10 flex min-w-[140px] cursor-pointer items-center justify-center rounded-lg h-12 px-6 bg-primary text-white text-base font-bold hover:bg-primary/90 transition-all shadow-lg">
+                        Saber más
+                    </button>
+</div>
+</div>
+</div>
+<!-- Corporate Services Grid -->
+<section class="max-w-7xl mx-auto px-4 py-12">
+<h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold mb-8">Nuestros Servicios Corporativos</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="flex flex-col gap-4 rounded-xl border border-primary/10 bg-white dark:bg-background-dark/50 p-6 shadow-sm hover:shadow-md transition-shadow">
+<div class="text-primary p-3 bg-primary/10 w-fit rounded-lg">
+<span class="material-symbols-outlined">groups</span>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold">Salas de Juntas</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Espacios modernos equipados con la última tecnología audiovisual para sus reuniones ejecutivas.</p>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-xl border border-primary/10 bg-white dark:bg-background-dark/50 p-6 shadow-sm hover:shadow-md transition-shadow">
+<div class="text-primary p-3 bg-primary/10 w-fit rounded-lg">
+<span class="material-symbols-outlined">wifi</span>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold">Wi-Fi de Alta Velocidad</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Conexión de fibra óptica dedicada y estable en todas las áreas del hotel para trabajo sin interrupciones.</p>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-xl border border-primary/10 bg-white dark:bg-background-dark/50 p-6 shadow-sm hover:shadow-md transition-shadow">
+<div class="text-primary p-3 bg-primary/10 w-fit rounded-lg">
+<span class="material-symbols-outlined">coffee</span>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold">Desayuno Ejecutivo</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Buffet premium con opciones saludables y energéticas para comenzar su jornada laboral con éxito.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Partners Carousel -->
+<section class="bg-primary/5 dark:bg-primary/10 py-16 mb-12">
+<div class="max-w-7xl mx-auto px-4">
+<h2 class="text-center text-slate-900 dark:text-slate-100 text-xl font-bold mb-10 opacity-70">Empresas que confían en nosotros</h2>
+<div class="relative group pause-on-hover">
+<!-- Navigation Arrows -->
+<button class="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/80 dark:bg-slate-800/80 p-2 rounded-full shadow-md text-primary hover:bg-white dark:hover:bg-slate-700 transition-colors focus:outline-none focus:ring-0" id="prev-btn">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/80 dark:bg-slate-800/80 p-2 rounded-full shadow-md text-primary hover:bg-white dark:hover:bg-slate-700 transition-colors focus:outline-none focus:ring-0" id="next-btn">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+<!-- Carousel Container -->
+<div class="overflow-hidden flex items-center" id="carousel-viewport">
+<div class="animate-scroll gap-12 items-center px-6"><!-- Set 1: 6 Unique Logos -->
+<div class="flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer w-48">
+<span class="text-xl font-black text-slate-700 dark:text-slate-300">NEXUS CORP</span>
+</div>
+<div class="flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer w-48">
+<span class="text-xl font-black text-slate-700 dark:text-slate-300">SOLARIS TECH</span>
+</div>
+<div class="flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer w-48">
+<span class="text-xl font-black text-slate-700 dark:text-slate-300">GLOBAL LOGISTICS</span>
+</div>
+<div class="flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer w-48">
+<span class="text-xl font-black text-slate-700 dark:text-slate-300">ECO-FLOW</span>
+</div>
+<div class="flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer w-48">
+<span class="text-xl font-black text-slate-700 dark:text-slate-300">SUMMIT SOLUTIONS</span>
+</div>
+<div class="flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer w-48">
+<span class="text-xl font-black text-slate-700 dark:text-slate-300">VISIONARY APPS</span>
+</div>
+<!-- Set 2: Duplicated for seamless loop -->
+<div class="flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer w-48">
+<span class="text-xl font-black text-slate-700 dark:text-slate-300">NEXUS CORP</span>
+</div>
+<div class="flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer w-48">
+<span class="text-xl font-black text-slate-700 dark:text-slate-300">SOLARIS TECH</span>
+</div>
+<div class="flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer w-48">
+<span class="text-xl font-black text-slate-700 dark:text-slate-300">GLOBAL LOGISTICS</span>
+</div>
+<div class="flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer w-48">
+<span class="text-xl font-black text-slate-700 dark:text-slate-300">ECO-FLOW</span>
+</div>
+<div class="flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer w-48">
+<span class="text-xl font-black text-slate-700 dark:text-slate-300">SUMMIT SOLUTIONS</span>
+</div>
+<div class="flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer w-48">
+<span class="text-xl font-black text-slate-700 dark:text-slate-300">VISIONARY APPS</span>
+</div></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-background-dark text-slate-400 py-12">
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="col-span-1 md:col-span-2">
+<div class="flex items-center gap-2 mb-4 text-white">
+<span class="material-symbols-outlined text-primary">bed</span>
+<span class="text-xl font-bold">Hotel Soleares</span>
+</div>
+<p class="max-w-md text-sm leading-relaxed">
+                    Ofreciendo experiencias excepcionales de alojamiento desde 2010. Tu hogar lejos de casa, tanto para negocios como placer.
+                </p>
+</div>
+<div>
+<h4 class="text-white font-bold mb-4">Enlaces</h4>
+<ul class="space-y-2 text-sm">
+<li><a class="hover:text-primary transition-colors" href="#">Habitaciones</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Servicios</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Eventos</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contacto</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-4">Contacto</h4>
+<ul class="space-y-2 text-sm">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs">location_on</span> Av. Principal 123, Ciudad</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs">phone</span> +54 11 1234-5678</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs">mail</span> info@hotelsoleares.com</li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-slate-800 text-xs flex flex-col md:flex-row justify-between items-center gap-4">
+<p>© 2024 Hotel Soleares. Todos los derechos reservados.</p>
+<div class="flex gap-6">
+<a class="hover:text-white transition-colors" href="#">Privacidad</a>
+<a class="hover:text-white transition-colors" href="#">Términos</a>
+</div>
+</div>
+</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const viewport = document.getElementById('carousel-viewport');
+        const content = viewport.querySelector('.animate-scroll');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const scrollAmount = 300;
+
+        const handleManualScroll = (direction) => {
+            // Pause the animation
+            content.style.animationPlayState = 'paused';
+            
+            // Calculate new scroll position
+            const currentScroll = viewport.scrollLeft;
+            const newScroll = direction === 'next' 
+                ? currentScroll + scrollAmount 
+                : currentScroll - scrollAmount;
+
+            viewport.scrollTo({
+                left: newScroll,
+                behavior: 'smooth'
+            });
+
+            // Resume animation shortly after manual click to keep it functional
+            clearTimeout(viewport.resumeTimeout);
+            viewport.resumeTimeout = setTimeout(() => {
+                content.style.animationPlayState = 'running';
+            }, 500);
+        };
+
+        prevBtn.addEventListener('click', () => handleManualScroll('prev'));
+        nextBtn.addEventListener('click', () => handleManualScroll('next'));
+
+        // Ensure the viewport itself is scrollable for the JS scrollTo to work
+        viewport.style.overflowX = 'auto';
+        viewport.classList.add('no-scrollbar');
+    });
+</script></body></html>
