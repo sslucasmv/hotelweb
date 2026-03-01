@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "icon": "material-symbols:group-outline",
+    "desc": "Hasta 31 plazas disponibles"
+  },
+  {
+    "id": 2,
+    "icon": "material-symbols:wifi",
+    "desc": "Wi-Fi en todo el Hotel"
+  },
+  {
+    "id": 3,
+    "icon": "material-symbols:coffee-outline",
+    "desc": "Desayuno con horario flexible"
+  },
+  {
+    "id": 4,
+    "icon": "material-symbols:alt-route-rounded",
+    "desc": "Acceso a avenidas principales"
+  },
+  {
+    "id": 5,
+    "icon": "material-symbols:bed-outline",
+    "desc": "Sommiers cómodos"
+  },
+  {
+    "id": 6,
+    "icon": "material-symbols:shield-lock-outline",
+    "desc": "Seguridad 24 hs"
+  },
+  {
+    "id": 7,
+    "icon": "material-symbols:tv-outline",
+    "desc": "TV por cable en habitación"
+  },
+  {
+    "id": 8,
+    "icon": "material-symbols:heat",
+    "desc": "Calefacción en cada habitación"
+  },
+  {
+    "id": 9,
+    "icon": "material-symbols:meeting-room-outline",
+    "desc": "Baño privado"
+  },
+  {
+    "id": 10,
+    "icon": "material-symbols:mode-fan-outline",
+    "desc": "Ventilador de techo"
+  },
+  {
+    "id": 11,
+    "icon": "material-symbols:flatware",
+    "desc": "Vajilla a disposición"
+  },
+  {
+    "id": 12,
+    "icon": "material-symbols:kettle-outline",
+    "desc": "Pava eléctrica a disposición"
+  },
+  {
+    "id": 13,
+    "icon": "material-symbols:microwave-outline",
+    "desc": "Microondas a disposición"
+  },
+  {
+    "id": 14,
+    "icon": "material-symbols:storefront-outline",
+    "desc": "Cercanía a comercios"
+  },
+  {
+    "id": 15,
+    "icon": "material-symbols:location-on-outline",
+    "desc": "Puerto de Mar del Plata a 2 km"
+  },
+  {
+    "id": 16,
+    "icon": "material-symbols:factory-outline",
+    "desc": "Fábricas Portuarias a 2.2 km"
+  },
+  {
+    "id": 17,
+    "icon": "material-symbols:bolt-outline",
+    "desc": "Central eléctrica a 2.2 km"
+  },
+  {
+    "id": 18,
+    "icon": "material-symbols:precision-manufacturing-outline",
+    "desc": "Parque Industrial a 4.5 km"
+  }
+]

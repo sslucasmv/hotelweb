@@ -1,6 +1,8 @@
 ---
 import ServiciosItems from '../components/ServiciosItems.astro';
 import { Icon } from 'astro-icon/components';
+// importo el json de Servicios
+import serviciosParaEmpresas from '../data/serviciosParaEmpresas.json' // lista de servicios
 ---
 
 <section class="px-2 py-4">
@@ -11,35 +13,17 @@ import { Icon } from 'astro-icon/components';
       
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-8 pt-4">
-          {[
-            { icon: "material-symbols:bed-outline", text: "Hasta 41 plazas disponibles" },
-            { icon: "material-symbols:wifi", text: "Wi-Fi en todo el Hotel" },
-            { icon: "material-symbols:local-cafe-outline", text: "Desayuno con horario flexible" },
-            { icon: "material-symbols:location-on-outline", text: "Acceso a avenidas principales" },
-            { icon: "material-symbols:hotel-outline", text: "Sommiers comodos" },
-            { icon: "material-symbols:shield-outline", text: "Seguridad 24 hs" },
-            { icon: "material-symbols:tv-guide-outline", text: "TV por cable en habitación" },
-            { icon: "material-symbols:heat", text: "Calefacción en cada habitacion" },
-            { icon: "material-symbols:cleaning-services-outline", text: "Baño privado" },
-            { icon: "material-symbols:info-outline", text: "Asesoramiento personal" },
-            { icon: "material-symbols:info-outline", text: "Vajillas a disposicion." },
-            { icon: "material-symbols:kettle-outline", text: "Pava Electrica a disposicion." },
-             { icon: "material-symbols:microwave-outline", text: "Microondas a disposicion." },
-            { icon: "material-symbols:store-outline", text: "Cercanias a comercios." },
-            { icon: "material-symbols:anchor", text: "Puerto de Mar del Plata a 2 km." },
-             { icon: "material-symbols:forklift-outline", text: "Fabricas Portuarias 2.2 km." },
-              { icon: "material-symbols:electric-bolt-outline", text: "Central electrica a 2.2 km." },
-             { icon: "material-symbols:factory-outline", text: "Parque industrial a 4.5 km." }
-               
-            
-          ].map((item) => (
-            <div class="flex items-center gap-3 group">
-              <Icon name={item.icon} class="w-5 h-5 text-blue-ocean group-hover:scale-110 transition-transform" />
-              <span class="text-slate-700 font-medium text-sm md:text-base">{item.text}</span>
+        {serviciosParaEmpresas.map((item) => (
+             <div class="flex items-center gap-3 group">
+            <Icon name={item.icon} class="w-5 h-5 text-blue-ocean group-hover:scale-110 transition-transform" />
+            <span class="text-slate-700 font-medium text-sm md:text-base">{item.desc}</span>
             </div>
-          ))}
+        ))}
         </div>
+        <p class="py-4 mt-4 text-slate-600">Acceso a las habitaciones superiores por escalera.</p>
       </div>
+
+    
 
       
       <div class="flex flex-col">
