@@ -1,0 +1,101 @@
+---
+import ServiciosItems from '../components/ServiciosItems.astro';
+import { Icon } from 'astro-icon/components';
+---
+
+<section class="px-2 py-4">
+  <div class="max-w-7xl mx-auto"> 
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+      
+      <div>
+      
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-8 pt-4">
+          {[
+            { icon: "material-symbols:bed-outline", text: "Hasta 41 plazas disponibles" },
+            { icon: "material-symbols:wifi", text: "Wi-Fi en todo el Hotel" },
+            { icon: "material-symbols:local-cafe-outline", text: "Desayuno con horario flexible" },
+            { icon: "material-symbols:location-on-outline", text: "Acceso a avenidas principales" },
+            { icon: "material-symbols:hotel-outline", text: "Sommiers comodos" },
+            { icon: "material-symbols:shield-outline", text: "Seguridad 24 hs" },
+            { icon: "material-symbols:tv-guide-outline", text: "TV por cable en habitación" },
+            { icon: "material-symbols:heat", text: "Calefacción en cada habitacion" },
+            { icon: "material-symbols:cleaning-services-outline", text: "Baño privado" },
+            { icon: "material-symbols:info-outline", text: "Asesoramiento personal" },
+            { icon: "material-symbols:info-outline", text: "Vajillas a disposicion." },
+            { icon: "material-symbols:kettle-outline", text: "Pava Electrica a disposicion." },
+             { icon: "material-symbols:microwave-outline", text: "Microondas a disposicion." },
+            { icon: "material-symbols:store-outline", text: "Cercanias a comercios." },
+            { icon: "material-symbols:anchor", text: "Puerto de Mar del Plata a 2 km." },
+             { icon: "material-symbols:forklift-outline", text: "Fabricas Portuarias 2.2 km." },
+              { icon: "material-symbols:electric-bolt-outline", text: "Central electrica a 2.2 km." },
+             { icon: "material-symbols:factory-outline", text: "Parque industrial a 4.5 km." }
+               
+            
+          ].map((item) => (
+            <div class="flex items-center gap-3 group">
+              <Icon name={item.icon} class="w-5 h-5 text-blue-ocean group-hover:scale-110 transition-transform" />
+              <span class="text-slate-700 font-medium text-sm md:text-base">{item.text}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      
+      <div class="flex flex-col">
+        <div class="bg-white p-8 rounded-2xl border border-blue-100 shadow-sm flex flex-col h-full">
+          <div class="mb-6">
+            <h3 class="text-golden-sun font-bold text-lg uppercase tracking-widest mb-2">Alojamiento para empresas</h3>
+            <p class="text-gray-700 text-ms leading-relaxed">
+              ¿Necesita alojamiento para sus empleados? Póngase en contacto con nosotros para brindarle asesoramiento personalizado en cuanto a la disposición de habitaciones y precios personalizados para empresas.
+            </p>
+          </div>
+          
+          <div class="space-y-5 mb-6 mt-8">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
+                <Icon name="material-symbols:mail-outline" class="text-blue-ocean text-xl w-6 h-6" />
+              </div>
+              <div class="overflow-hidden">
+                <p class="text-[10px] text-gray-400 uppercase tracking-wider font-bold">Email corporativo</p>
+                <p class="text-sm font-semibold truncate">empresas@hotelsoleares.com.ar</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
+                <Icon name="material-symbols:phone-in-talk-outline" class="text-blue-ocean text-xl w-6 h-6" />
+              </div>
+              <div>
+                <p class="text-[10px] text-gray-400 uppercase tracking-wider font-bold">Atención Comercial</p>
+                <p class="text-sm font-semibold">+54 223 484-1431</p>
+              </div>
+            </div>
+          </div>
+
+        <div class="mt-auto pt-6 border-t border-blue-100">
+  <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="text-gray-600 font-bold text-[10px] md:text-xs uppercase tracking-wider">
+      Haga click para pedir asesoramiento
+    </p>
+    
+    <a 
+      href="https://wa.me/549223XXXXXXX?text=Hola!%20Me%20gustaría%20pedir%20presupuesto%20por%20una%20estancia%20en%20el%20Hotel." 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="group bg-green-600 text-white font-bold py-2.5 px-6 rounded-full 
+             text-sm transition-all duration-300 ease-in-out
+             md:hover:bg-green-700 md:hover:-translate-y-0.5 
+             active:scale-95 flex items-center gap-2 shadow-md"
+    >
+      Pedir presupuesto
+      <Icon 
+        name="material-symbols:arrow-forward-rounded" 
+        class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" 
+      />
+    </a>
+  </div>
+</div>
+
+
+  </div>
+</section>
