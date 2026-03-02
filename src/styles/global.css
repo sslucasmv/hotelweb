@@ -38,12 +38,17 @@
   font-size: 14px;
   padding: 12px 20px;
   /* ASEGÚRATE de que este color sea el que quieres ver de fondo */
-  background-color:#2D8BB9 !important; 
+  background-color:#f1a63a !important; 
   color: #ffffff;
-  border: none;
+  border:1px solid #c48328 ;
   border-radius: 8px;
   cursor: pointer;
   z-index: 1; /* El botón y su texto están en el nivel 1 */
+}
+
+.btn-ocean:hover {
+    border:1px solid  #d38f31;
+      background-color: #db9a3e !important; 
 }
 
 .onda {
@@ -53,7 +58,7 @@
   width: 0;
   height: 0;
   /* BAJA LA OPACIDAD: usa 0.1 o 0.2 para que sea casi transparente */
-  background-color: rgba(255, 255, 255, 0.15); 
+  background-color: rgba(255, 255, 255, 0.307); 
   border-radius: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
@@ -65,6 +70,7 @@
 /* Animaciones individuales como pediste */
 .btn-ocean:hover .onda:nth-child(1) { 
   animation: ripple-slow 3s cubic-bezier(0.4, 0, 0.2, 1) forwards 1;
+
 }
 
 .btn-ocean:hover .onda:nth-child(2) { 

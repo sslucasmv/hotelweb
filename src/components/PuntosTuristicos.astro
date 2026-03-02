@@ -5,10 +5,12 @@ import balnearios from '../assets/images/puntamogotes.jpg';
 import micro from '../assets/images/micro.webp';
 import puerto from '../assets/images/puertocomercial.webp';
 import bendu from '../assets/images/benduarena.jpg';
+
+// prop de fondo de seccion
 const { fondo = "bg-white" } = Astro.props; // "bg-white" es el valor por defecto
 ---
 
-<section class={`py-16 px-6 ${fondo}`}>
+<section class={`pb-16 pt-10 border-t border-slate-200 px-6 ${fondo}`}>
   <div class="max-w-7xl mx-auto">
     
     <div class="text-center mb-12">

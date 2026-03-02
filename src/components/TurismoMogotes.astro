@@ -1,38 +1,108 @@
-<section class="py-20 px-6 bg-white">
-<div class="max-w-7xl mx-auto">
-<div class="text-center mb-12">
-<h2 class="text-3xl font-bold mb-4">Puntos turísticos Cercanos</h2>
-<p class="text-gray-600">Explora los rincones más emblemáticos cerca de nuestro hotel.</p>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-<!-- Attraction 1 -->
-<div class="group">
-<div class="aspect-[4/3] rounded-xl overflow-hidden mb-4 shadow-sm">
-<img alt="Catedral Histórica" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHp2N_k_Hic3W-G9jAnQ6560Bv9msh6hH5S6Y-NnAnF57yD-Bf0-G9R3_T7sS0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5"/>
-</div>
-<p class="text-sm font-medium text-gray-800 text-center">Admira la arquitectura gótica de nuestra catedral histórica.</p>
-</div>
-<!-- Attraction 2 -->
-<div class="group">
-<div class="aspect-[4/3] rounded-xl overflow-hidden mb-4 shadow-sm">
-<img alt="Museo de Arte" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-pG2N_k_Hic3W-G9jAnQ6560Bv9msh6hH5S6Y-NnAnF57yD-Bf0-G9R3_T7sS0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5"/>
-</div>
-<p class="text-sm font-medium text-gray-800 text-center">Descubre obras contemporáneas en el museo de arte local.</p>
-</div>
-<!-- Attraction 3 -->
-<div class="group">
-<div class="aspect-[4/3] rounded-xl overflow-hidden mb-4 shadow-sm">
-<img alt="Parque Central" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_pG2N_k_Hic3W-G9jAnQ6560Bv9msh6hH5S6Y-NnAnF57yD-Bf0-G9R3_T7sS0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5"/>
-</div>
-<p class="text-sm font-medium text-gray-800 text-center">Relájate en los senderos verdes del parque central de la ciudad.</p>
-</div>
-<!-- Attraction 4 -->
-<div class="group">
-<div class="aspect-[4/3] rounded-xl overflow-hidden mb-4 shadow-sm">
-<img alt="Mercado Tradicional" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1pG2N_k_Hic3W-G9jAnQ6560Bv9msh6hH5S6Y-NnAnF57yD-Bf0-G9R3_T7sS0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5-0H9E5"/>
-</div>
-<p class="text-sm font-medium text-gray-800 text-center">Saborea la gastronomía local en el mercado de tradiciones.</p>
-</div>
-</div>
-</div>
+---
+import { Image } from 'astro:assets';
+// imagenes turismo mogotes
+import laguna from '../assets/images/laguna.avif';
+import chapa from '../assets/images/chapa.jpg';
+import balnearios from '../assets/images/balnearios.jpg';
+import reservaLobos from '../assets/images/reservaLobos.jpg';
+---
+
+<section class="pt-10 pb-20 px-6 bg-white border-t border-slate-200">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold mb-4 text-blue-ocean">Paseos turísticos Cercanos</h2>
+      <p class="text-gray-600">
+        Explora los rincones más emblemáticos cerca de nuestro hotel.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      
+      <div class="group">
+        <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 shadow-sm">
+          <Image
+            src={laguna}
+            alt="Sierra y Laguna de los Padres"
+            width={800}
+            height={600}
+            widths={[400, 800]}
+            sizes="(max-width: 600px) 400px, 800px"
+            format="webp"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+
+          <div class="absolute bottom-0 left-0 right-0 bg-black/50 p-3">
+            <p class="text-ms text-white text-center">
+              Laguna artificial - a 200 metros
+            </p>
+          </div>
+        </div>
+        </div>
+
+      <div class="group">
+        <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 shadow-sm">
+          <Image
+            src={chapa}
+            alt="Chapadmalal Mar del Plata"
+            width={800}
+            height={600}
+            widths={[400, 800]}
+            sizes="(max-width: 600px) 400px, 800px"
+            format="webp"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+           <div class="absolute bottom-0 left-0 right-0 bg-black/50 p-3">
+            <p class="text-ms text-white text-center">
+              Chapadmalal - a 5,5 km
+            </p>
+          </div>
+        </div>
+        </div>
+
+ <div class="group">
+        <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 shadow-sm">
+          <Image
+            src={reservaLobos}
+            alt="Sierra y Laguna de los Padres"
+            width={800}
+            height={600}
+            widths={[400, 800]}
+            sizes="(max-width: 600px) 400px, 800px"
+            format="webp"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+           <div class="absolute bottom-0 left-0 right-0 bg-black/50 p-3">
+            <p class="text-ms text-white text-center">
+              Reserva de Lobos Marinos - a 3,4 km
+            </p>
+          </div>
+        </div>
+        </div>
+
+
+         <div class="group">
+        <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 shadow-sm">
+          <Image
+            src={balnearios}
+            alt="Balnearios Punta Mogotes"
+            width={800}
+            height={600}
+            widths={[400, 800]}
+            sizes="(max-width: 600px) 400px, 800px"
+            format="webp"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+           <div class="absolute bottom-0 left-0 right-0 bg-black/50 p-3">
+            <p class="text-ms text-white text-center">
+              Balnearios y playas  - a 200 metros
+            </p>
+          </div>
+        </div>
+        </div>
+
+
+
+
+      </div>
+  </div>
 </section>
