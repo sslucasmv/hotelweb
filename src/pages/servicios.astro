@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ServiciosPage from '../components/ServiciosPage.astro';
+import PuntosTuristicos from '../components/PuntosTuristicos.astro';
+import TurismoMogotes from '../components/TurismoMogotes.astro'
 ---
 
 <BaseLayout title="Nuestras Habitaciones">
@@ -13,8 +16,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </p>
         </div>
 
-        
+    
+    <ServiciosPage />
 
-      
     </section>
+        <PuntosTuristicos fondo="bg-slate-50" />
+
+        <TurismoMogotes />
+
 </BaseLayout>

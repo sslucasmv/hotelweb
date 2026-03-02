@@ -1,0 +1,72 @@
+---
+import ServiciosItems from '../components/ServiciosItems.astro';
+import { Image } from 'astro:assets';
+import cafe from '../assets/images/cafe.jpg';
+import PuntosTuristicos from '../components/PuntosTuristicos.astro';
+---
+
+
+<section class="px-6 pt-2">
+  <div class="max-w-7xl mx-auto"> 
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+    <!-- Left Column: Services Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+
+        <ServiciosItems 
+          name="wifi" 
+          titulo="Wifi Gratuito" 
+          descripcion="En todo el hotel" 
+        />
+
+        <ServiciosItems 
+          name="coffee-outline" 
+          titulo="Desayuno incluido" 
+          descripcion="Variedad de productos." 
+        />
+
+          <ServiciosItems 
+          name="cleaning-services-outline" 
+          titulo="Limpieza diaria" 
+          descripcion="Cambio de ropa blanca." 
+        />
+
+          <ServiciosItems 
+          name="concierge-outline" 
+          titulo="Recepción 24 hs" 
+          descripcion="Atención continua." 
+        />
+
+          <ServiciosItems 
+          name="paid-outline" 
+          titulo="Metodos de pago" 
+          descripcion="Comodidad y beneficios." 
+        />
+
+          <ServiciosItems 
+          name="tv-outline" 
+          titulo="Tv por cable" 
+          descripcion="Habitaciones con tv/cable" 
+        />
+
+      </div>
+
+    <!-- Right Column: Breakfast Image with Overlay -->
+      <div class="relative rounded-2xl overflow-hidden shadow-lg group h-64">
+        <Image 
+          src={cafe} 
+          alt="Desayuno incluido" 
+          width={800} 
+          height={600}
+          widths={[400, 800]} 
+          sizes="(max-width: 1024px) 100vw, 50vw" // Mejoramos la precisión
+          format="webp"
+          loading="lazy" // Como está después del Hero, que cargue al scrollear
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+        />
+        <div class="absolute inset-0 bg-black/55 flex items-center justify-center p-8 text-center">
+          <h4 class="text-white text-2xl font-bold leading-tight">Desayuno incluido con amplia variedad de productos</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

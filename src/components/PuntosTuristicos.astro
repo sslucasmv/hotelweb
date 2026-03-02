@@ -2,12 +2,13 @@
 import { Image } from 'astro:assets';
 // Asegúrate de importar tus imágenes aquí (esto es un ejemplo)
 import balnearios from '../assets/images/puntamogotes.jpg';
-import bosque from '../assets/images/bosquepr.png';
+import micro from '../assets/images/micro.webp';
 import puerto from '../assets/images/puertocomercial.webp';
 import bendu from '../assets/images/benduarena.jpg';
+const { fondo = "bg-white" } = Astro.props; // "bg-white" es el valor por defecto
 ---
 
-<section class="py-16 px-6 bg-white">
+<section class={`py-16 px-6 ${fondo}`}>
   <div class="max-w-7xl mx-auto">
     
     <div class="text-center mb-12">
@@ -29,15 +30,15 @@ import bendu from '../assets/images/benduarena.jpg';
   format="webp"
   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
 />
-          <div class="absolute bottom-0 left-0 right-0 bg-black/50 p-3">
-            <p class="text-sm text-white text-center">Playa punta mogotes - a 200 metros</p>
+          <div class="absolute bottom-0 left-0 right-0 bg-black/70 p-3">
+            <p class="text-ms text-white text-center">Playa punta mogotes - a 200 metros</p>
           </div>
         </div>
 
         <div class="group relative overflow-hidden rounded-2xl shadow-md">
           <Image 
-  src={bosque} 
-  alt="Edificios Históricos y Bosque" 
+  src={micro} 
+  alt="Parada de Micros Punta mogotes" 
   width={800} 
   height={600} 
   widths={[400, 800]} 
@@ -45,8 +46,8 @@ import bendu from '../assets/images/benduarena.jpg';
   format="webp"
   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
 />
-          <div class="absolute bottom-0 left-0 right-0 bg-black/50 p-3">
-            <p class="text-sm text-white text-center">Bosque Peralta Ramos - a 1 km</p>
+          <div class="absolute bottom-0 left-0 right-0 bg-black/70 p-3">
+            <p class="text-ms text-white text-center">Parada de micros -  a  250 metros </p>
           </div>
         </div>
 
@@ -61,8 +62,8 @@ import bendu from '../assets/images/benduarena.jpg';
   format="webp"
   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
 />
-          <div class="absolute bottom-0 left-0 right-0 bg-black/50 p-3">
-            <p class="text-sm text-white text-center">Puerto Comercial - a 2,9 km</p>
+          <div class="absolute bottom-0 left-0 right-0 bg-black/70 p-3">
+            <p class="text-ms text-white text-center">Puerto Comercial - a 2,9 km</p>
           </div>
         </div>
 
@@ -77,8 +78,8 @@ import bendu from '../assets/images/benduarena.jpg';
   format="webp"  /* Formato de próxima generación que te pide Google */
   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
 />
-          <div class="absolute bottom-0 left-0 right-0 bg-black/50 p-3">
-            <p class="text-sm text-white text-center">Bendu Arena - a 3,3 km</p>
+          <div class="absolute bottom-0 left-0 right-0 bg-black/70 p-3">
+            <p class="text-ms text-white text-center">Bendu Arena - a 3,3 km</p>
           </div>
         </div>
       </div>
