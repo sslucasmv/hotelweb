@@ -60,7 +60,7 @@ import PuntosTuristicos from '../components/PuntosTuristicos.astro';
           widths={[400, 800]} 
           sizes="(max-width: 1024px) 100vw, 50vw" // Mejoramos la precisión
           format="webp"
-          loading="lazy" // Como está después del Hero, que cargue al scrollear
+          loading="eagerly" // Como está después del Hero, que cargue al scrollear
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
         />
         <div class="absolute inset-0 bg-black/55 flex items-center justify-center p-8 text-center">
