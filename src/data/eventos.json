@@ -1,0 +1,116 @@
+[
+  {
+    "fecha": "06/03",
+    "titulo": "Bocanada",
+    "lugar": "Teatro Colón",
+    "direccion": "Hipólito Yrigoyen 1665"
+  },
+  {
+    "fecha": "06/03",
+    "titulo": "Solos, un lienzo en blanco",
+    "lugar": "El Galpón de las Artes",
+    "direccion": "Jujuy 2755"
+  },
+  {
+    "fecha": "07/03",
+    "titulo": "Palito Ortega",
+    "lugar": "Teatro Radio City",
+    "direccion": "San Luis 1750"
+  },
+  {
+    "fecha": "07/03",
+    "titulo": "Karaoke con Charo López",
+    "lugar": "Club TRI",
+    "direccion": "20 de Septiembre 2650"
+  },
+  {
+    "fecha": "07/03",
+    "titulo": "Fernando Sanjiao - Quemado",
+    "lugar": "Sala Melany",
+    "direccion": "San Luis 1750"
+  },
+  {
+    "fecha": "08/03",
+    "titulo": "Vidas paralelas",
+    "lugar": "Villa Victoria",
+    "direccion": "Matheu 1851"
+  },
+  {
+    "fecha": "08/03",
+    "titulo": "Operación Rosa Rosa",
+    "lugar": "Vorterix",
+    "direccion": "Diagonal Pueyrredón 3338"
+  },
+  {
+    "fecha": "14/03",
+    "titulo": "La Banda Sabinera",
+    "lugar": "Teatro Radio City",
+    "direccion": "San Luis 1750"
+  },
+  {
+    "fecha": "14/03",
+    "titulo": "Cardellino",
+    "lugar": "Chauvin",
+    "direccion": "San Luis 2849"
+  },
+  {
+    "fecha": "19/03",
+    "titulo": "Rata Blanca",
+    "lugar": "Teatro Radio City",
+    "direccion": "San Luis 1750"
+  },
+  {
+    "fecha": "20/03",
+    "titulo": "Reina Madre - Tributo a Queen",
+    "lugar": "Teatro Colón",
+    "direccion": "Hipólito Yrigoyen 1665"
+  },
+  {
+    "fecha": "21/03",
+    "titulo": "La Pared de Ross",
+    "lugar": "Teatro Auditorium (Sala Payró)",
+    "direccion": "Paseo Peralta Ramos 2280"
+  },
+  {
+    "fecha": "22/03",
+    "titulo": "El Conventillo de la Paloma",
+    "lugar": "Teatro Auditorium (Sala Payró)",
+    "direccion": "Paseo Peralta Ramos 2280"
+  },
+  {
+    "fecha": "22/03",
+    "titulo": "Lo nuestro es Puro Teatro",
+    "lugar": "Teatro Auditorium (Sala Nachman)",
+    "direccion": "Paseo Peralta Ramos 2280"
+  },
+  {
+    "fecha": "22/03",
+    "titulo": "Regla de tres simple",
+    "lugar": "Sala Melany",
+    "direccion": "San Luis 1750"
+  },
+  {
+    "fecha": "22/03",
+    "titulo": "Fiesta Polenta",
+    "lugar": "Club TRI",
+    "direccion": "20 de Septiembre 2650"
+  },
+  {
+    "fecha": "27/03",
+    "titulo": "Fátima Universal",
+    "lugar": "Teatro Roxy",
+    "direccion": "San Luis 1750"
+  },
+  {
+    "fecha": "28/03",
+    "titulo": "Connie Ballarini",
+    "lugar": "Teatro Radio City",
+    "direccion": "San Luis 1750"
+  },
+  {
+    "fecha": "01/04",
+    "titulo": "Los Abuelos de la Nada",
+    "lugar": "Teatro Radio City",
+    "direccion": "San Luis 1750"
+  }
+]
