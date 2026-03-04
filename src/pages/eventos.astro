@@ -1,55 +1,72 @@
+
 ---
-
 import BaseLayout from '../layouts/BaseLayout.astro';
-import eventos from '../data/eventos.json';
-import { Icon } from 'astro-icon/components';
+import recitalesData from '../data/recitales-2026.json';
+import deportesData from '../data/deportes.json';
+import festivalesData from '../data/festivales.json';
 
+
+const destacadosRecitales = recitalesData.slice(0, 4);
+const destacadosDeportes = deportesData.slice(0, 4);
+const destacadosFestivales = festivalesData.slice(0, 4);
 ---
 
 <BaseLayout>
 
-<section class="pt-6 pb-15 px-6 max-w-7xl mx-auto">
-  <div class="mb-0 border-b pb-6 border-slate-300">
+<section class="max-w-7xl mx-auto px-4 py-6">
+     <div class="mb-12 border-b pb-6 border-slate-300">
             <h2 class="text-3xl font-bold text-blue-ocean tracking-tight mb-4">
-                Eventos 2026 - Mar del Plata
+                Eventos en Marzo 2026
             </h2>
+          <p class="text-slate-600 text-lg">
+                Consulte los diferentes eventos y festividades en nuestra ciudad.
+            </p>
           
         </div>
-    <h3 class="flex items-center gap-2 text-xl font-bold text-slate-800 dark:text-slate-600 mb-6 mt-10">
-    <Icon 
-        name="material-symbols:calendar-check" 
-        class="size-6 text-sky-600 dark:text-sky-500" 
-    />
-    Recitales - Marzo 2026
-</h3>
-
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-2">
-        {eventos.map((evento) => (
-            <div class="border-b border-slate-400/70 border-dotted py-3 px-2 flex items-center gap-4  transition-colors">
-                
-                <div class="flex items-center justify-center min-w-[55px] border-r border-slate-300 dark:border-slate-600 pr-4">
-                    <span class="text-xl font-black text-slate-800 dark:text-sky-500">
-                        {evento.fecha}
-                    </span>
-                </div>
-
-                <div class="flex-1 min-w-0">
-                    <h4 class="text-base font-bold text-slate-900 dark:text-orange-400 truncate">
-                        {evento.titulo}
-                    </h4>
-                    
-                    <div class="flex items-center gap-2">
-                        <p class="text-[14px] font-bold text-slate-700 dark:text-slate-500">
-                            {evento.lugar}
-                        </p>
-                        <span class="text-slate-400 dark:text-slate-600 text-[10px]">•</span>
-                        <p class="text-[14px] text-slate-500 dark:text-slate-500 truncate">
-                            {evento.direccion}
-                        </p>
-                    </div>
-                </div>
-            </div>
-        ))}
+  <div class="mb-16">
+    <div class="flex justify-between items-end mb-6">
+      <h2 class="text-2xl font-bold border-l-4 border-sky-600 pl-4 text-slate-800">Recitales y Música</h2>
+      <a href="/eventos/recitales-2026" class="text-sky-600 font-semibold hover:text-sky-800 transition">Ver cartelera completa →</a>
     </div>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {destacadosRecitales.map((evento) => (
+        <div class="group bg-white border border-slate-200 rounded-2xl p-5 hover:border-sky-300 hover:shadow-xl hover:shadow-sky-500/10 transition-all duration-300">
+          <span class="inline-block px-2 py-1 bg-sky-50 text-sky-600 rounded-md text-xs font-bold mb-3">
+            {evento.fecha}
+          </span>
+          <h3 class="font-bold text-slate-800 group-hover:text-sky-600 transition-colors leading-snug">
+            {evento.titulo}
+          </h3>
+          <p class="text-slate-500 text-sm mt-3 flex items-center gap-1">
+            <span class="opacity-70">{evento.lugar}</span>
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="mb-16">
+    <div class="flex justify-between items-end mb-6">
+      <h2 class="text-2xl font-bold border-l-4 border-orange-500 pl-4 text-slate-800">Deportes y Maratones</h2>
+      <a href="/eventos/deportes" class="text-orange-500 font-semibold hover:text-orange-700 transition">Ver agenda deportiva →</a>
+    </div>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {destacadosDeportes.map((evento) => (
+        <div class="group bg-white border border-slate-200 rounded-2xl p-5 hover:border-orange-300 hover:shadow-xl hover:shadow-orange-500/10 transition-all duration-300">
+          <span class="inline-block px-2 py-1 bg-orange-50 text-orange-600 rounded-md text-xs font-bold mb-3">
+            {evento.fecha}
+          </span>
+          <h3 class="font-bold text-slate-800 group-hover:text-orange-600 transition-colors leading-snug">
+            {evento.titulo}
+          </h3>
+          <p class="text-slate-500 text-sm mt-3">
+            <span class="opacity-70">{evento.lugar}</span>
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
 </section>
 </BaseLayout>
