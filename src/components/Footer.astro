@@ -1,9 +1,24 @@
+---
+import { Image } from 'astro:assets';
+import logoBlanco from '../assets/images/logoblanco.png';
+---
+
 <footer class="bg-slate-800 dark:bg-background-dark border-t-[6px] border-sky-400/40 pt-10 pb-16">
     <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-start gap-10">
         
         <div class="max-w-sm">
             <div class="flex items-center gap-3 mb-6">
-                <h2 class="text-xl font-bold text-slate-300">Hotel Soleares</h2>
+ <Image 
+    src={logoBlanco} 
+    alt="logo hotel soleares"
+    width={80}   /* Tamaño visual en la pantalla */
+    height={90}  /* Mantiene la proporción 4:3 */
+    widths={[200, 380]} /* Generamos el doble y el triple para que se vea nítido */
+    sizes="180px" 
+    format="webp"
+    loading="eagerly"
+    class="w-auto h-auto" /* Usamos auto para que no se estire si el contenedor es más grande */
+/>
             </div>
             <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed pb-4">
                 Experiencias inolvidables frente al mar. Lujo, confort y naturaleza en un solo lugar.
