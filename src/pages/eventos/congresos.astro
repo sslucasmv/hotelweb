@@ -1,45 +1,45 @@
 ---
 
 import BaseLayout from '../..//layouts/BaseLayout.astro';
-import eventos from '../../data/eventos.json';
+import congresos from '../../data/congresos.json';
 import { Icon } from 'astro-icon/components';
 
 ---
 
 <BaseLayout>
 
-<section class="pt-2 pb-15 px-6 max-w-7xl mx-auto ">
- 
+<section class="pt-2 pb-15 px-6 max-w-7xl mx-auto">
+
     <h3 class="border-b border-slate-300 pb-4 flex items-center gap-2 text-xl font-bold text-slate-800 dark:text-slate-600 mb-6 mt-10">
     <Icon 
         name="material-symbols:calendar-check" 
         class="size-6 text-sky-600 dark:text-sky-500" 
     />
-    Recitales - Marzo 2026
+    Congresos y reuniones - Marzo 2026
 </h3>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-2">
-        {eventos.map((evento) => (
+        {congresos.map((congreso) => (
             <div class="border-b border-slate-400/70 border-dotted py-3 px-2 flex items-center gap-4  transition-colors">
                 
                 <div class="flex items-center justify-center min-w-[55px] border-r border-slate-300 dark:border-slate-600 pr-4">
                     <span class="text-xl font-black text-slate-800 dark:text-sky-500">
-                        {evento.fecha}
+                        {congreso.fecha}
                     </span>
                 </div>
 
                 <div class="flex-1 min-w-0">
                     <h4 class="text-base font-bold text-slate-900 dark:text-orange-400 truncate">
-                        {evento.titulo}
+                        {congreso.titulo}
                     </h4>
                     
                     <div class="flex items-center gap-2">
                         <p class="text-[14px] font-bold text-slate-700 dark:text-slate-500">
-                            {evento.lugar}
+                            {congreso.lugar}
                         </p>
                         <span class="text-slate-400 dark:text-slate-600 text-[10px]">•</span>
                         <p class="text-[14px] text-slate-500 dark:text-slate-500 truncate">
-                            {evento.direccion}
+                            {congreso.direccion}
                         </p>
                     </div>
                 </div>

@@ -1,0 +1,68 @@
+[
+  {
+    "fecha": "03/03",
+    "titulo": "Popurrí de Idiomas (Francés)",
+    "lugar": "Confitería Sugar",
+    "direccion": "Diag. Pueyrredón entre San Martín y Rivadavia"
+  },
+  {
+    "fecha": "05/03",
+    "titulo": "1ª Jornadas de Ciencias Políticas",
+    "lugar": "Facultad de Humanidades (UNMDP)",
+    "direccion": "Funes 3350"
+  },
+  {
+    "fecha": "05/03",
+    "titulo": "Café de Idiomas (Portugués)",
+    "lugar": "Café Bronte",
+    "direccion": "Alberti 2599"
+  },
+  {
+    "fecha": "05/03",
+    "titulo": "Taller: Poesía de Borges (Día 1)",
+    "lugar": "Mariano Taborda y Emilio Teno",
+    "direccion": "Consultar ubicación al inscribirse"
+  },
+  {
+    "fecha": "06/03",
+    "titulo": "Workshop de Traumatología",
+    "lugar": "Clínica Maternidad Colón",
+    "direccion": "Av. Colón 3629"
+  },
+  {
+    "fecha": "06/03",
+    "titulo": "Taller: Poesía de Borges (Día 2)",
+    "lugar": "Mariano Taborda y Emilio Teno",
+    "direccion": "Consultar ubicación al inscribirse"
+  },
+  {
+    "fecha": "11/03",
+    "titulo": "Café de Idiomas (Italiano)",
+    "lugar": "Marqués del Mar",
+    "direccion": "Belgrano 2601"
+  },
+  {
+    "fecha": "13/03",
+    "titulo": "Encuentro Abogados con Discapacidad",
+    "lugar": "Facultad de Derecho (UNMDP)",
+    "direccion": "25 de Mayo 2865"
+  },
+  {
+    "fecha": "26/03",
+    "titulo": "Mes de la Poesía (SEP)",
+    "lugar": "Sociedad de Escritores",
+    "direccion": "Mar del Plata"
+  },
+  {
+    "fecha": "27/03",
+    "titulo": "Café de Idiomas (Alemán)",
+    "lugar": "Consultar por teléfono",
+    "direccion": "Llamar al 4956600"
+  },
+  {
+    "fecha": "27/03",
+    "titulo": "1º Congreso Cirugía Torácica Robótica",
+    "lugar": "Clínica Maternidad Colón",
+    "direccion": "Av. Colón 3629"
+  }
+]

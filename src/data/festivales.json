@@ -1,0 +1,68 @@
+[
+  {
+    "fecha": "01/03",
+    "titulo": "Foro de las Colectividades",
+    "lugar": "Villa Victoria",
+    "direccion": "Matheu 1851"
+  },
+  {
+    "fecha": "01/03",
+    "titulo": "Pool Party - Cierre de Temporada",
+    "lugar": "El Calamar Loco",
+    "direccion": "Chapadmalal"
+  },
+  {
+    "fecha": "04/03",
+    "titulo": "Homenaje a Mariano Mores",
+    "lugar": "Casa sobre el Arroyo",
+    "direccion": "Quintana 3998"
+  },
+  {
+    "fecha": "06 al 15",
+    "titulo": "24° Festival Iberoamericano de Teatro",
+    "lugar": "Teatro Auditorium / Cuatro Elementos",
+    "direccion": "Paseo Peralta Ramos 2280"
+  },
+  {
+    "fecha": "07 al 08",
+    "titulo": "Festín - Feria Gastronómica",
+    "lugar": "Villa Mitre",
+    "direccion": "Lamadrid 3870"
+  },
+  {
+    "fecha": "14/03",
+    "titulo": "Expo Sabores MDP",
+    "lugar": "Plaza del Agua",
+    "direccion": "Güemes y Roca"
+  },
+  {
+    "fecha": "14/03",
+    "titulo": "Mardel Jam 2026",
+    "lugar": "Villa Victoria",
+    "direccion": "Matheu 1851"
+  },
+  {
+    "fecha": "20 al 22",
+    "titulo": "Fiesta Regional del Pescado Frito",
+    "lugar": "Banquina de Pescadores",
+    "direccion": "Puerto de Mar del Plata"
+  },
+  {
+    "fecha": "21 al 28",
+    "titulo": "72ª Semana Fallera Marplatense",
+    "lugar": "Plaza Colón",
+    "direccion": "Av. Peralta Ramos y Arenales"
+  },
+  {
+    "fecha": "28/03",
+    "titulo": "Falla: Cremá del Monumento",
+    "lugar": "Plaza Colón",
+    "direccion": "Av. Peralta Ramos y Arenales"
+  },
+  {
+    "fecha": "29/03",
+    "titulo": "Tardecita Fest",
+    "lugar": "Villa Victoria",
+    "direccion": "Matheu 1851"
+  }
+]

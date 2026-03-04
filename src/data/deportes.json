@@ -1,0 +1,44 @@
+[
+  {
+    "fecha": "08/03",
+    "titulo": "Maratón de la Mujer (5K y 10K)",
+    "lugar": "Corredor Saludable",
+    "direccion": "Av. Libertad y La Costa"
+  },
+  {
+    "fecha": "13 al 15",
+    "titulo": "11° MDQ RUN 2026 - Encuentro de Vespa",
+    "lugar": "Puntos varios de la ciudad",
+    "direccion": "Mar del Plata"
+  },
+  {
+    "fecha": "15/03",
+    "titulo": "Triatlón Olímpico ISSPORT 2026",
+    "lugar": "Playa Bristol / Centro Cívico",
+    "direccion": "Av. Luro y La Costa"
+  },
+  {
+    "fecha": "20/03",
+    "titulo": "Básquet: Peñarol vs. Ferro (Liga Nacional)",
+    "lugar": "Estadio Polideportivo Islas Malvinas",
+    "direccion": "Av. Juan B. Justo y España"
+  },
+  {
+    "fecha": "21/03",
+    "titulo": "Básquet: Quilmes vs. Unión (Liga Argentina)",
+    "lugar": "Club Quilmes",
+    "direccion": "Av. Luro 3868"
+  },
+  {
+    "fecha": "Desde 28/03",
+    "titulo": "55° Abierto Internacional de Ajedrez",
+    "lugar": "Casino Central",
+    "direccion": "Av. Peralta Ramos 2100"
+  },
+  {
+    "fecha": "29/03",
+    "titulo": "Triatlón Series Mar del Plata",
+    "lugar": "Corredor Costero",
+    "direccion": "Paseo Jesús de Galíndez"
+  }
+]
