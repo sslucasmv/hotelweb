@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components'
 import logoBlanco from '../assets/images/logoblanco.png';
 ---
 
@@ -15,7 +16,6 @@ import logoBlanco from '../assets/images/logoblanco.png';
     height={90}  /* Mantiene la proporción 4:3 */
     widths={[200, 380]} /* Generamos el doble y el triple para que se vea nítido */
     sizes="180px" 
-    format="webp"
     loading="eagerly"
     class="w-auto h-auto" /* Usamos auto para que no se estire si el contenedor es más grande */
 />
@@ -54,17 +54,47 @@ import logoBlanco from '../assets/images/logoblanco.png';
         <h4 class="font-bold text-slate-300 mb-5 text-sm uppercase tracking-wider">Contacto</h4>
         <div class="space-y-3 text-sm text-slate-400">
             <p class="flex items-center gap-2">
-                <span>📍 Mar del Plata, Argentina</span>
+             <Icon name="material-symbols:location-on"/>
+             Mar del Plata, Argentina</span>
             </p>
             <p class="flex items-center gap-2">
+             <Icon name="material-symbols:mail"/> 
                 <a href="mailto:reservas@hotelsoleares.com" class="hover:text-sky-400 transition-colors">
-                    ✉️ reservas@hotelsoleares.com
+               reservas@hotelsoleares.com
+                </a>
+            </p>
+              <p class="flex items-center gap-2">
+             <Icon name="material-symbols:phone-enabled"/> 
+                <a href="mailto:reservas@hotelsoleares.com" class="hover:text-sky-400 transition-colors">
+               +549 223 4840818
+                </a>
+            </p>
+             <p class="flex items-center gap-2">
+             <Icon name="material-symbols:chat"/> 
+                <a href="mailto:reservas@hotelsoleares.com" class="hover:text-sky-400 transition-colors">
+               +549 223 5410625
                 </a>
             </p>
         </div>
     </div>
 </div>
-    </div>
 
+
+    </div>
+<a 
+  href="https://wa.me/549223XXXXXXX" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  class="fixed bottom-6 right-50 z-50 transition-transform hover:scale-110 active:scale-90 shadow-[-2px_2px_10px_rgba(0,0,0,0.5)] rounded-full"
+  aria-label="Contactar por WhatsApp"
+>
+  <img 
+    src="images/ws.png" 
+    alt="WhatsApp del hotel" 
+    width="60" 
+    height="60"
+    class="w-14 h-14 md:w-16 md:h-16" 
+  />
+</a>
    
 </footer>
