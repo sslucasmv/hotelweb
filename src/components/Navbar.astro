@@ -31,17 +31,24 @@ import { Icon } from 'astro-icon/components';
             <a class={`nav-link relative py-2 font-semibold text-gray-600 ${isActive("/eventos") ? "link-active" : ""}`} href="/eventos">Eventos</a>
         </nav>
 
-      <button class="btn-ocean hidden sm:flex items-center gap-2 group overflow-hidden relative">
+     <a 
+  href="https://api.whatsapp.com/send/?phone=5492233425621&text&type=phone_number&app_absent=0" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  class="btn-ocean hidden sm:flex items-center gap-2 group overflow-hidden relative cursor-pointer no-underline"
+>
     <span class="onda"></span>
     <span class="onda"></span>
     
-    <span class="relative z-10 font-semibold [text-shadow:_0_1px_2px_rgb(0_0_0_/_40%)]">Reservar ahora</span>
+    <span class="relative z-10 font-semibold [text-shadow:_0_1px_2px_rgb(0_0_0_/_40%)]">
+      Contactenos!
+    </span>
 
     <Icon 
-      name="material-symbols:calendar-check-outline" 
+      name="material-symbols:chat" 
       class="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform duration-300" 
     />
-</button>
+</a>
 
             <button 
                 class="menu-hamburguesa flex items-center justify-center text-gray-800 p-2 cursor-pointer md:hidden" 
