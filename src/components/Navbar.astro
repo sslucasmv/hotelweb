@@ -41,7 +41,7 @@ import { Icon } from 'astro-icon/components';
     <span class="onda"></span>
     
     <span class="relative z-10 font-semibold [text-shadow:_0_1px_2px_rgb(0_0_0_/_40%)]">
-      Contactenos!
+      Contactenos
     </span>
 
     <Icon 
@@ -80,9 +80,14 @@ import { Icon } from 'astro-icon/components';
         <a class={`text-lg font-bold p-3 rounded-lg ${isActive("/alojamientoEmpresas") ? "text-blue-ocean bg-blue-ocean/10" : "text-gray-600"}`} href="/alojamientoEmpresas">Alojamiento para empresas</a>
         <a class={`text-lg font-bold p-3 rounded-lg ${isActive("/eventos") ? "text-blue-ocean bg-blue-ocean/10" : "text-gray-600"}`} href="/eventos">Eventos</a>
         <div class="mt-4 pt-4 border-t border-gray-100">
-            <button class="w-full bg-blue-ocean text-white py-4 rounded-xl font-bold text-lg">
-                Reserve Ahora
-            </button>
+            <a 
+  href="https://api.whatsapp.com/send/?phone=5492233425621&text&type=phone_number&app_absent=0" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  class="w-full btn-ocean text-white py-4 rounded-xl font-bold text-lg flex items-center justify-center transition-transform active:scale-95 shadow-lg hover:brightness-110"
+>
+  Contactenos
+</a>
         </div>
     </nav>
 </div>
