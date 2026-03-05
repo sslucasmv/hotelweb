@@ -2,7 +2,8 @@
 import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
 
-const { titulo, desc, fotos, categoria, tipo } = Astro.props;
+// Agregamos desc_larga y servicios a las props
+const { titulo, desc, desc_larga, servicios, fotos, categoria, tipo } = Astro.props;
 
 const imagenesLocales = import.meta.glob<{ default: ImageMetadata }>('../assets/images/habitaciones/*.{jpeg,jpg,JPG,png,webp}');
 const nombreArchivo = (fotos && fotos.length > 0) ? fotos[0] : null;
@@ -15,6 +16,9 @@ const esPremium = categoria === "Superior";
   class="group flex flex-col bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 relative max-w-sm mx-auto cursor-pointer btn-open-modal"
   data-titulo={titulo} 
   data-desc={desc} 
+  data-desc-larga={desc_larga} 
+  data-categoria={categoria}
+  data-servicios={JSON.stringify(servicios || [])}
   data-fotos={JSON.stringify(fotos || [])}
 >
   
