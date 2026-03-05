@@ -4,7 +4,7 @@
     "titulo": "Habitación 2",
     "tipo": "Doble",
     "categoria": "Superior",
-    "desc": "Habitacion amplia, con vista al mar, mesa y sillas para desayunar.",
+    "desc": "Habitacion amplia, con vista jardin, incluye mesa y sillas para desayunar.",
     "desc_larga": "Disfrutá de una de nuestras mejores unidades. Esta habitación superior destaca por su amplitud y una vista privilegiada al mar de Punta Mogotes, ideal para relajarse con el sonido de las olas.",
     "servicios": ["Vista al Mar", "Mesa y sillas", "Wi-Fi", "TV por cable", "Baño Privado"]
   },
@@ -58,9 +58,9 @@
     "titulo": "Habitación 8",
     "tipo": "Cuadruple",
     "categoria": "Estándar",
-    "desc": "Habitacion luminosa con dos camas comodas de una plaza.",
+    "desc": "Habitacion luminosa ideal para familias.",
     "desc_larga": "Una excelente opción para grupos que buscan precio y calidad. Configurada para cuatro personas, mantiene la luminosidad y el orden en todo momento.",
-    "servicios": ["4 Camas", "Wi-Fi", "Baño privado amplio", "Ventilación", "TV"]
+    "servicios": ["Cama matrimonial y dos camas de 1 plaza", "Wi-Fi", "Baño privado amplio", "Ventilación", "TV"]
   },
   {
     "id": "h9-",
@@ -69,7 +69,7 @@
     "categoria": "Estándar",
     "desc": "Habitacion luminosa, amplia y con vista al mar.",
     "desc_larga": "Disfrutá de la brisa marina desde esta cómoda habitación doble. Su diseño permite un flujo de aire constante y una vista despejada de la costa marplatense.",
-    "servicios": ["Vista al Mar", "Cama matrimonial", "Wi-Fi", "Espejo de cuerpo entero", "Baño"]
+    "servicios": ["Vista al Mar", "Cama matrimonial", "Wi-Fi", "Espejo de cuerpo entero"]
   },
   {
     "id": "h10-",
@@ -95,7 +95,7 @@
     "tipo": "Triple",
     "categoria": "Estándar",
     "desc": "Habitacion doble matrimonial.",
-    "desc_larga": "A pesar de ser categorizada como triple por su espacio, cuenta con una disposición de cama matrimonial premium, ideal para parejas que desean amplitud.",
+    "desc_larga": "Cuenta con una disposición de cama matrimonial.Vista a la Calle.",
     "servicios": ["Sommier Matrimonial", "Wi-Fi", "Mesa de noche", "Ambiente silencioso", "TV"]
   },
   {
@@ -105,7 +105,7 @@
     "categoria": "Estándar",
     "desc": "Habitacion doble matrimonial y cama.",
     "desc_larga": "Versatilidad total para padres con un hijo. Ambiente acogedor con decoración renovada siguiendo el estilo moderno del hotel.",
-    "servicios": ["Cama Matrimonial + 1 Twin", "Wi-Fi", "TV", "Baño privado", "Amenities de baño"]
+    "servicios": ["Cama Matrimonial + una cama de 1 plaza y media", "Wi-Fi", "TV", "Baño privado"]
   },
   {
     "id": "h14-",
@@ -113,8 +113,8 @@
     "tipo": "Triple",
     "categoria": "Superior",
     "desc": "Habitacion amplia y luminosa con vista al mar",
-    "desc_larga": "Experiencia premium para tres personas. Se encuentra en uno de los pisos con mejor ángulo de visión hacia los balnearios de Punta Mogotes.",
-    "servicios": ["Vista Panorámica al Mar", "3 Sommiers premium", "Wi-Fi", "Mesa y sillas", "Frigobar"]
+    "desc_larga": "Experiencia premium para tres personas. Se encuentra en el tercer piso para mayor vista al mar.",
+    "servicios": ["Vista Panorámica al Mar", "3 Sommiers premium", "Wi-Fi", "Mesa y sillas","Tv led", "Frigobar"]
   },
   {
     "id": "h15-",
@@ -123,34 +123,34 @@
     "categoria": "Estándar",
     "desc": "Habitacion doble,luminosa con vista al mar",
     "desc_larga": "Confort y vista al mar en un formato compacto y eficiente. Ideal para estadías cortas donde se busca disfrutar de la playa al máximo.",
-    "servicios": ["Vista al Mar", "Wi-Fi", "TV Led", "Caja fuerte", "Baño"]
+    "servicios": ["Vista al Mar", "Wi-Fi", "TV Led","Baño amplio"]
   },
   {
     "id": "h16-",
     "titulo": "Habitación 16",
-    "tipo": "Doble",
+    "tipo": "Triple",
     "categoria": "Estándar",
-    "desc": "Habitacion doble,luminosa con vista al mar",
-    "desc_larga": "Similar a nuestra unidad 15, ofrece una excelente relación precio-calidad con el beneficio inigualable de ver el amanecer sobre el mar.",
-    "servicios": ["Vista al Mar", "Wi-Fi", "Sommier doble", "Calefacción", "Amenities"]
+    "desc": "Habitacion triple, cama matrimonial y cama de una plaza, luminosa con vista al mar",
+    "desc_larga": "Ofrece una excelente relación precio-calidad con el beneficio inigualable de ver el amanecer sobre el mar.",
+    "servicios": ["Vista al Mar", "Wi-Fi", "Sommier doble", "Calefacción"]
   },
   {
     "id": "h17-",
     "titulo": "Habitación 17",
     "tipo": "Triple",
     "categoria": "Estándar",
-    "desc": "Habitacion doble,luminosa con vista al mar",
+    "desc": "Habitacion Triple, Sommiers comodos, luminosa con vista a la calle.",
     "desc_larga": "Espacio triple con gran entrada de luz solar. Su ubicación estratégica en el edificio garantiza una vista despejada de la costa.",
-    "servicios": ["Vista al Mar", "3 Camas Twin", "Wi-Fi", "TV", "Placard"]
+    "servicios": ["Cama matrimonial y Cama de una plaza", "Wi-Fi", "TV", "Placard"]
   },
   {
     "id": "h18-",
     "titulo": "Habitación 18",
     "tipo": "Doble",
     "categoria": "Estándar",
-    "desc": "Habitacion doble,luminosa con vista al mar",
+    "desc": "Habitacion doble, en tercer piso, con vista a la calle.",
     "desc_larga": "Unidad doble clásica del hotel. Mantiene el estándar de modernidad y limpieza con una ventana orientada directamente hacia el océano.",
-    "servicios": ["Vista al Mar", "Wi-Fi", "Escritorio", "Baño privado", "TV"]
+    "servicios": ["Vista al Mar", "Wi-Fi", "TV Led", "Baño privado", "TV"]
   },
   {
     "id": "h19-",
@@ -158,7 +158,7 @@
     "tipo": "Cuadruple",
     "categoria": "Superior",
     "desc": "Ideal para grupos, cuatro camas cómodas y amplio baño.",
-    "desc_larga": "Nuestra habitación de mayor capacidad y categoría. Pensada para que los grupos no sacrifiquen confort, cuenta con un baño de dimensiones generosas y áreas de descanso bien definidas.",
-    "servicios": ["4 Camas individuales", "Baño Grande", "Wi-Fi de alta velocidad", "Smart TV", "Frigobar"]
+    "desc_larga": "Nuestra habitación de mayor capacidad y categoría. Pensada para que los grupos no sacrifiquen confort, cuenta con un baño de dimensiones generosas y áreas de descanso bien definidas.Vista a la calle.",
+    "servicios": ["4 Camas individuales", "Baño Grande", "Wi-Fi de alta velocidad", "Smart TV", "Placard con Perchas"]
   }
 ]
